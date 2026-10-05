@@ -509,6 +509,18 @@ html:root[data-skin="s5"]{--paper:#140A0C;--paper2:#22100F;--ink:#F2E6E4;--muted
 .mrow{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 8px;border-radius:10px;border:1px solid var(--line);font-size:13px}.mrow small{display:block;color:var(--muted);font-size:11px}.mrow em{font-style:normal;font-weight:700;color:var(--muted)}
 .mrow.ok{border-color:var(--jade);background:var(--jade-soft)}.mrow.ok em{color:var(--jade)}
 .nbtag{margin:6px 0;padding:6px 10px;border-radius:10px;background:color-mix(in srgb,#66BB6A 14%,var(--paper2));border:1px solid #66BB6A;font-size:13px}
+.qtag{display:inline-block;margin:6px auto 0;padding:3px 12px;border-radius:999px;font-size:12px;font-weight:700;background:color-mix(in srgb,var(--gold) 16%,var(--paper2));border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);color:var(--ink)}#hqTag,#bTag{display:table;margin:6px auto 0}
+.glist{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.gcard{border:1px solid var(--line);border-radius:14px;background:var(--paper2);padding:10px 12px}.gcard.done{border-color:var(--jade);background:color-mix(in srgb,var(--jade) 7%,var(--paper2))}
+.gcard summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none}.gcard summary::-webkit-details-marker{display:none}
+.gpat{min-width:64px;font-size:20px;font-weight:700;color:var(--cinnabar);text-align:center}.gname{display:flex;flex-direction:column;font-weight:700}.gname small{color:var(--gold);letter-spacing:2px}
+.gform{margin:8px 0 4px;padding:6px 10px;border-radius:10px;background:color-mix(in srgb,var(--gold) 12%,transparent);font-size:13px;font-weight:600}
+.gex{display:flex;gap:8px;align-items:flex-start;margin:6px 0}.gz{font-size:19px;line-height:1.5}.gblank{color:var(--cinnabar);text-decoration:underline;text-underline-offset:4px}
+.gsp{padding:4px 8px;min-height:32px}.gqz{font-size:24px;line-height:1.6;text-align:center;margin:4px 0}.gslot{display:inline-block;min-width:48px;border-bottom:3px solid var(--gold);color:var(--gold)}
+.gqbox{text-align:center}.gorder{min-height:48px;margin:6px 0;padding:8px;border:2px dashed var(--line);border-radius:12px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center}
+.gorder.ok{border-color:var(--jade);background:var(--jade-soft)}.gorder.no{border-color:var(--cinnabar)}.gpick{font-size:20px;padding:2px 8px;border-radius:8px;background:color-mix(in srgb,var(--gold) 16%,transparent)}
+.gtiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.gtile{min-width:56px;font-size:20px}.gans{margin-top:8px;padding:8px;border-radius:10px;background:var(--paper)}
+.tabs button{min-width:0}@media (max-width:420px){.tabs button{font-size:9px;letter-spacing:-.2px;white-space:nowrap;padding-left:0;padding-right:0}.tabs .han{font-size:17px}}
 .qcur{border-color:var(--gold)}.qhd{display:flex;gap:10px;align-items:center}.qhd .han{font-size:22px;font-weight:900;color:var(--cinnabar)}
 .qstory{line-height:1.7;font-size:15px}.qlock{opacity:.55}.bio p{line-height:1.7}
 .shopico{display:inline-block;white-space:nowrap;margin-top:2px;padding:1px 8px;border-radius:999px;background:var(--gold);color:#1C1608;font-size:12px;font-weight:700}
@@ -638,6 +650,12 @@ setTimeout(function(){if(!window.__ttOK)window.__bootErr("Game tải quá lâu (
     <div class="opts" id="sOpts"></div>
     <div class="fb" id="sFb"></div>
   </div>
+</section>
+
+<!-- CÔNG PHÁP · NGỮ PHÁP -->
+<section class="view" id="vGram">
+  <h2>☯️ Công pháp · Ngữ pháp</h2>
+  <div id="gramBody"></div>
 </section>
 
 <!-- NHIỆM VỤ CHÍNH -->
@@ -831,6 +849,7 @@ setTimeout(function(){if(!window.__ttOK)window.__bootErr("Game tải quá lâu (
 <nav class="tabs">
   <button class="on" data-v="vTrain"><span class="han">修</span>Tu luyện</button>
   <button data-v="vBase"><span class="han">基</span>Căn cơ</button>
+  <button data-v="vGram"><span class="han">法</span>Công pháp</button>
   <button data-v="vBoss"><span class="han">战</span>Bí cảnh</button>
   <button data-v="vWrite"><span class="han">键</span>Luyện gõ</button>
   <button data-v="vLib"><span class="han">经</span>Tàng kinh</button>
@@ -1767,6 +1786,68 @@ B0.quiz=[
  ["阮庆在天书最后一页写了什么？","Nguyễn Khánh viết gì lên trang cuối Thiên Thư?","墨有言","墨无言","结束","阮庆"]];
 B0.unl=()=>!!(S.wins||{})[6];B0.unlTxt="Mở khóa sau khi đánh bại Ma Thần (trùm cuối ở Bí cảnh)";B0.lv="HSK4–5";
 B0.cd={n:"Thiên Thư toàn quyển",zh:"书",st:1500,inv:{tl:3,tt:3,ht:3,bh:3},buff:.05};})();
+/* ---------- CÔNG PHÁP · NGỮ PHÁP (HSK1–3) ----------
+   [id, cấp, mẫu, tên, công thức, giải thích, [câu "từ|từ|…", vị trí ô trống, "nhiễu1/nhiễu2/nhiễu3", nghĩa], …] */
+const GRAM_RAW=[
+["g101",1,"是","Câu chữ 是","A + 是 + B · phủ định: A + 不是 + B","Dùng 是 để nói A là B (danh tính, nghề nghiệp, quốc tịch). Không dùng 是 trước tính từ.",["我|是|学生|。",1,"有/在/很","Tôi là học sinh."],["他|不|是|老师|。",2,"没/有/在","Anh ấy không phải giáo viên."]],
+["g102",1,"吗","Câu hỏi với 吗","Câu trần thuật + 吗？","Thêm 吗 vào cuối câu trần thuật để tạo câu hỏi có/không.",["你|是|中国人|吗|？",3,"呢/吧/的","Bạn là người Trung Quốc phải không?"],["你|喜欢|喝|茶|吗|？",4,"呢/了/的","Bạn có thích uống trà không?"]],
+["g103",1,"呢","Hỏi lại với 呢","…，你呢？ · Danh từ + 呢？","呢 dùng để hỏi lại “còn… thì sao?” hoặc hỏi vị trí “… đâu?”.",["我|很|好|，|你|呢|？",5,"吗/了/的","Tôi khỏe, còn bạn?"],["我的|书|呢|？",2,"吗/了/的","Sách của tôi đâu rồi?"]],
+["g104",1,"很","Câu vị ngữ tính từ","Chủ ngữ + 很 + Tính từ","Tính từ làm vị ngữ thường có 很 đứng trước, không dùng 是.",["今天|很|热|。",1,"是/有/在","Hôm nay rất nóng."],["她|很|漂亮|。",1,"是/的/在","Cô ấy rất xinh."]],
+["g105",1,"的","Sở hữu với 的","Danh từ/Đại từ + 的 + Danh từ","的 nối người sở hữu với vật được sở hữu, giống “của”.",["这|是|我|的|书|。",3,"了/是/很","Đây là sách của tôi."],["他|是|我|的|朋友|。",3,"了/很/在","Anh ấy là bạn của tôi."]],
+["g106",1,"不","Phủ định với 不","不 + Động từ/Tính từ","不 phủ định thói quen, ý muốn, hiện tại và tương lai.",["我|不|喝|咖啡|。",1,"没/很/也","Tôi không uống cà phê."],["今天|不|冷|。",1,"没/是/有","Hôm nay không lạnh."]],
+["g107",1,"没有","Phủ định với 没(有)","没有 + Danh từ · 没 + Động từ","没有 phủ định 有 (không có) và việc chưa/không xảy ra trong quá khứ.",["我|没有|钱|。",1,"不/是/很","Tôi không có tiền."],["他|昨天|没|来|。",2,"不是/很/是","Hôm qua anh ấy không đến."]],
+["g108",1,"也","Phó từ 也","Chủ ngữ + 也 + Động từ","也 nghĩa là “cũng”, luôn đứng sau chủ ngữ, trước động từ.",["我|也|是|学生|。",1,"很/的/在","Tôi cũng là học sinh."],["他|也|喜欢|猫|。",1,"很/是/的","Anh ấy cũng thích mèo."]],
+["g109",1,"都","Phó từ 都","Chủ ngữ số nhiều + 都 + Động từ","都 nghĩa là “đều”, đứng sau chủ ngữ số nhiều, trước động từ.",["我们|都|是|老师|。",1,"很/在/的","Chúng tôi đều là giáo viên."],["他们|都|喜欢|中国菜|。",1,"很/是/的","Họ đều thích món Trung Quốc."]],
+["g110",1,"在","在 chỉ nơi chốn","Chủ ngữ + 在 + Nơi chốn (+ Động từ)","在 nghĩa là “ở”, có thể đứng một mình làm động từ hoặc trước động từ chỉ nơi làm việc gì.",["我|在|学校|。",1,"是/有/很","Tôi ở trường."],["妈妈|在|家|做饭|。",1,"是/有/很","Mẹ nấu cơm ở nhà."]],
+["g111",1,"有","Câu chữ 有","A + 有 + B · Nơi chốn + 有 + Sự vật","有 nghĩa là “có”: sở hữu hoặc tồn tại ở một nơi.",["我|有|一个|妹妹|。",1,"是/在/很","Tôi có một em gái."],["桌子|上|有|一本|书|。",2,"在/很/了","Trên bàn có một quyển sách."]],
+["g112",1,"个/本","Số + lượng từ + danh từ","Số từ + Lượng từ + Danh từ","Giữa số và danh từ phải có lượng từ: 个 (chung), 本 (sách), 件 (áo), 张 (giấy, bàn)…",["我|有|三|个|朋友|。",3,"本/件/张","Tôi có ba người bạn."],["我|买|了|两|本|书|。",4,"件/只/张","Tôi đã mua hai quyển sách."]],
+["g113",1,"几/多少","Hỏi số lượng","几 + Lượng từ (số nhỏ) · 多少 (số lớn/giá tiền)","几 hỏi số lượng nhỏ (thường dưới 10), 多少 hỏi số lớn hoặc giá tiền.",["你|家|有|几|口|人|？",3,"什么/哪/谁","Nhà bạn có mấy người?"],["这个|多少|钱|？",1,"几/什么/哪","Cái này bao nhiêu tiền?"]],
+["g114",1,"什么/哪儿","Đại từ nghi vấn","Đặt đại từ nghi vấn vào đúng vị trí cần hỏi","Câu hỏi tiếng Trung giữ nguyên trật tự câu, chỉ thay phần cần hỏi bằng 什么/谁/哪儿/几.",["你|叫|什么|名字|？",2,"谁/哪儿/几","Bạn tên là gì?"],["你|去|哪儿|？",2,"什么/谁/几","Bạn đi đâu?"]],
+["g115",1,"时间词","Trạng ngữ thời gian","Chủ ngữ + Thời gian + Động từ","Từ chỉ thời gian đứng trước động từ (trước hoặc sau chủ ngữ), không đặt cuối câu như tiếng Việt.",["我|明天|去|北京|。",1,"很/都/的","Ngày mai tôi đi Bắc Kinh."],["他|每天|八点|上班|。",1,"很/的/了","Ngày nào anh ấy cũng đi làm lúc tám giờ."]],
+["g116",1,"了","了 hoàn thành","Động từ + 了 (+ Tân ngữ) · Câu + 了","了 cho biết hành động đã hoàn thành hoặc tình huống đã thay đổi.",["我|买|了|一个|手机|。",2,"的/吗/呢","Tôi đã mua một chiếc điện thoại."],["他|已经|走|了|。",3,"的/吗/呢","Anh ấy đi rồi."]],
+["g117",1,"会/能","Động từ năng nguyện 会, 能","会/能 + Động từ","会: biết (qua học tập); 能: có thể, có khả năng/điều kiện.",["我|会|说|汉语|。",1,"是/在/有","Tôi biết nói tiếng Trung."],["你|明天|能|来|吗|？",2,"是/在/有","Ngày mai bạn đến được không?"]],
+["g118",1,"想","Động từ năng nguyện 想","想 + Động từ","想 nghĩa là “muốn”, đứng trước động từ.",["我|想|喝|水|。",1,"是/在/有","Tôi muốn uống nước."],["你|想|去|哪儿|？",1,"是/在/有","Bạn muốn đi đâu?"]],
+["g119",1,"和","Liên từ 和","Danh từ + 和 + Danh từ","和 nối hai danh từ, nghĩa “và”. Không dùng 和 nối hai mệnh đề.",["我|和|妈妈|去|商店|。",1,"也/都/很","Tôi và mẹ đi cửa hàng."],["苹果|和|香蕉|都|很|好吃|。",1,"也/很/都","Táo và chuối đều rất ngon."]],
+["g120",1,"太…了","Cảm thán 太…了","太 + Tính từ + 了","太…了 diễn tả mức độ quá cao, thường để cảm thán.",["今天|太|热|了|！",1,"是/在/有","Hôm nay nóng quá!"],["这个|太|贵|了|。",1,"是/有/在","Cái này đắt quá."]],
+["g201",2,"正在…呢","Hành động đang diễn ra","(正)在 + Động từ (+ 呢)","正在 cho biết hành động đang tiếp diễn, cuối câu thường có 呢.",["他|正在|看|书|呢|。",1,"已经/就/过","Anh ấy đang đọc sách."],["妈妈|正在|做饭|。",1,"已经/了/过","Mẹ đang nấu cơm."]],
+["g202",2,"过","Trợ từ kinh nghiệm 过","Động từ + 过","过 diễn tả việc đã từng trải qua; phủ định: 没 + Động từ + 过.",["我|去|过|中国|。",2,"着/的/在","Tôi từng đến Trung Quốc."],["你|吃|过|北京烤鸭|吗|？",2,"着/在/的","Bạn đã từng ăn vịt quay Bắc Kinh chưa?"]],
+["g203",2,"着","Trợ từ trạng thái 着","Động từ + 着","着 diễn tả trạng thái kéo dài hoặc cách thức của hành động khác.",["门|开|着|。",2,"过/的/在","Cửa đang mở."],["他|笑|着|说|。",2,"过/在/的","Anh ấy vừa cười vừa nói."]],
+["g204",2,"比","So sánh với 比","A + 比 + B + Tính từ","比 dùng để so sánh hơn; không thêm 很/非常 trước tính từ.",["我|比|他|高|。",1,"跟/和/很","Tôi cao hơn anh ấy."],["今天|比|昨天|冷|。",1,"跟/和/很","Hôm nay lạnh hơn hôm qua."]],
+["g205",2,"要…了","Sắp xảy ra","(快/就)要 + Động từ + 了","要…了 cho biết việc sắp xảy ra.",["火车|要|开|了|。",1,"正在/在/很","Tàu sắp chạy rồi."],["要|下雨|了|。",0,"正在/在/很","Sắp mưa rồi."]],
+["g206",2,"因为…所以…","Quan hệ nhân quả","因为 + Nguyên nhân，所以 + Kết quả","因为 nêu nguyên nhân, 所以 nêu kết quả.",["因为|下雨|，|所以|我|没|去|。",3,"但是/如果/虽然","Vì trời mưa nên tôi không đi."],["因为|他|病|了|，|所以|没|来|上课|。",5,"但是/虽然/如果","Vì bị ốm nên anh ấy không đi học."]],
+["g207",2,"虽然…但是…","Quan hệ nhượng bộ","虽然 + A，但是 + B","Dù A nhưng vẫn B; vế sau thường có 但是/可是.",["虽然|很|累|，|但是|我|很|高兴|。",4,"所以/因为/如果","Tuy rất mệt nhưng tôi rất vui."],["虽然|他|很|小|，|但是|很|聪明|。",5,"所以/因为/如果","Tuy còn nhỏ nhưng cậu ấy rất thông minh."]],
+["g208",2,"就","Phó từ 就 (sớm, ngay)","Thời gian + 就 + Động từ","就 nhấn mạnh việc xảy ra sớm, nhanh hoặc ngay lập tức.",["我|一会儿|就|来|。",2,"很/的/都","Tôi đến ngay đây."],["他|八点|就|到|了|。",2,"很/都/的","Tám giờ anh ấy đã đến rồi."]],
+["g209",2,"得","Bổ ngữ trình độ","Động từ + 得 + (很) + Tính từ","得 nối động từ với bổ ngữ đánh giá mức độ của hành động.",["他|跑|得|很|快|。",2,"的/地/了","Anh ấy chạy rất nhanh."],["你|说|得|很|好|。",2,"的/地/了","Bạn nói rất hay."]],
+["g210",2,"一下","Động từ + 一下","Động từ + 一下","一下 làm nhẹ giọng, nghĩa “thử, một chút”.",["请|等|一下|。",2,"一个/一本/一张","Xin đợi một chút."],["你|来|一下|。",2,"一个/一本/一张","Bạn lại đây một chút."]],
+["g211",2,"还是","Câu hỏi lựa chọn 还是","A + 还是 + B？","还是 dùng trong câu hỏi lựa chọn “A hay B?” (câu trần thuật dùng 或者).",["你|喝|茶|还是|咖啡|？",3,"或者/和/也","Bạn uống trà hay cà phê?"],["你|今天|去|还是|明天|去|？",3,"或者/和/也","Bạn đi hôm nay hay ngày mai?"]],
+["g212",2,"从…到…","Từ… đến…","从 + A + 到 + B","Chỉ điểm bắt đầu và kết thúc của thời gian hoặc không gian.",["从|北京|到|上海|要|五个小时|。",0,"在/往/对","Từ Bắc Kinh đến Thượng Hải mất năm tiếng."],["我|从|早上|到|晚上|都|在|工作|。",1,"在/往/对","Tôi làm việc từ sáng đến tối."]],
+["g213",2,"离","Khoảng cách với 离","A + 离 + B + 近/远","离 chỉ khoảng cách giữa hai nơi hoặc hai thời điểm.",["我家|离|学校|很|近|。",1,"从/在/到","Nhà tôi cách trường rất gần."],["机场|离|这儿|远|吗|？",1,"从/在/到","Sân bay cách đây có xa không?"]],
+["g214",2,"可以","Cho phép với 可以","可以 + Động từ","可以 diễn tả sự cho phép hoặc có thể làm gì.",["这里|可以|拍照|吗|？",1,"是/在/有","Ở đây được chụp ảnh không?"],["你|可以|用|我|的|电脑|。",1,"是/在/有","Bạn có thể dùng máy tính của tôi."]],
+["g215",2,"每…都","Mỗi… đều…","每 + Lượng từ/Danh từ + 都 + Động từ","每 thường đi với 都 để nhấn mạnh “không có ngoại lệ”.",["他|每天|都|跑步|。",2,"很/在/是","Ngày nào anh ấy cũng chạy bộ."],["每个人|都|喜欢|她|。",1,"很/在/是","Ai cũng thích cô ấy."]],
+["g216",2,"已经…了","Đã… rồi","已经 + Động từ + 了","已经…了 nhấn mạnh việc đã hoàn thành.",["我|已经|吃|饭|了|。",1,"正在/在/很","Tôi ăn cơm rồi."],["他|已经|到|了|。",1,"正在/在/很","Anh ấy đã đến rồi."]],
+["g217",2,"一边…一边…","Vừa… vừa…","一边 + Động từ 1，一边 + Động từ 2","Hai hành động diễn ra đồng thời.",["他|一边|吃饭|，|一边|看|电视|。",4,"一起/一样/一下","Anh ấy vừa ăn cơm vừa xem tivi."],["我们|一边|走|一边|聊天|。",3,"一起/一样/一下","Chúng tôi vừa đi vừa trò chuyện."]],
+["g218",2,"完/懂","Bổ ngữ kết quả","Động từ + 完/懂/到/好","Bổ ngữ kết quả cho biết kết quả của hành động: 完 (xong), 懂 (hiểu), 到 (được).",["我|听|懂|了|。",2,"得/着/过","Tôi nghe hiểu rồi."],["作业|写|完|了|吗|？",2,"得/着/过","Bài tập viết xong chưa?"]],
+["g301",3,"把","Câu chữ 把","Chủ ngữ + 把 + Tân ngữ + Động từ + Thành phần khác","把 đưa tân ngữ lên trước động từ để nhấn mạnh tác động lên nó; sau động từ phải có thành phần khác.",["请|把|门|关上|。",1,"被/让/给","Hãy đóng cửa lại."],["我|把|作业|做|完|了|。",1,"被/让/给","Tôi đã làm xong bài tập."]],
+["g302",3,"被","Câu bị động 被","Đối tượng + 被 + (Người làm) + Động từ + Thành phần khác","被 diễn tả bị động, thường mang sắc thái không mong muốn.",["我的|钱包|被|偷|了|。",2,"把/对/向","Ví của tôi bị trộm rồi."],["杯子|被|他|打破|了|。",1,"把/对/向","Cái cốc bị anh ấy làm vỡ."]],
+["g303",3,"越来越","Ngày càng","越来越 + Tính từ/Động từ tâm lý","越来越 diễn tả mức độ tăng dần theo thời gian.",["天气|越来越|热|了|。",1,"一点儿/有点儿/一边","Thời tiết ngày càng nóng."],["她的|汉语|越来越|好|。",2,"一点儿/有点儿/一边","Tiếng Trung của cô ấy ngày càng tốt."]],
+["g304",3,"越…越…","Càng… càng…","越 + A + 越 + B","B thay đổi theo A.",["雨|越|下|越|大|。",3,"很/最/更","Mưa càng lúc càng to."],["我|越|学|越|喜欢|汉语|。",3,"很/最/更","Tôi càng học càng thích tiếng Trung."]],
+["g305",3,"除了…以外","Ngoài… ra","除了 + A (+ 以外)，都/也/还…","除了…都: loại trừ A; 除了…还/也: bao gồm cả A.",["除了|小王|以外|，|大家|都|来|了|。",0,"因为/虽然/如果","Ngoài Tiểu Vương ra, mọi người đều đến."],["除了|英语|，|他|还|会|说|法语|。",0,"因为/虽然/如果","Ngoài tiếng Anh, anh ấy còn biết tiếng Pháp."]],
+["g306",3,"一…就…","Hễ… là…","一 + Động từ 1 + 就 + Động từ 2","Hành động 2 xảy ra ngay sau hành động 1.",["我|一|到|家|就|睡觉|了|。",4,"才/还/都","Tôi vừa về đến nhà là đi ngủ."],["他|一|看|就|懂|了|。",3,"才/还/都","Anh ấy vừa nhìn là hiểu."]],
+["g307",3,"才","Phó từ 才 (muộn, mới)","Thời gian + 才 + Động từ","才 nhấn mạnh việc xảy ra muộn hoặc khó khăn (trái nghĩa với 就).",["他|昨天|晚上|十二点|才|睡觉|，|太|晚|了|。",4,"就/都/还","Tối qua mười hai giờ anh ấy mới ngủ, muộn quá."],["等|了|一个|小时|，|他|才|来|。",6,"就/都/也","Đợi một tiếng đồng hồ anh ấy mới đến."]],
+["g308",3,"是…的","Câu nhấn mạnh 是…的","是 + Thông tin cần nhấn mạnh + Động từ + 的","Nhấn mạnh thời gian, nơi chốn, cách thức của việc đã xảy ra.",["我|是|坐|飞机|来|的|。",5,"了/吗/呢","Tôi đến bằng máy bay."],["你|是|什么时候|到|的|？",4,"了/吗/呢","Bạn đến lúc nào vậy?"]],
+["g309",3,"又…又…","Vừa… vừa… (tính chất)","又 + Tính từ + 又 + Tính từ","Nêu hai đặc điểm cùng tồn tại.",["这个|苹果|又|大|又|甜|。",4,"也/还/很","Quả táo này vừa to vừa ngọt."],["她|又|聪明|又|漂亮|。",3,"也/还/很","Cô ấy vừa thông minh vừa xinh đẹp."]],
+["g310",3,"如果…就…","Câu điều kiện","如果 + Điều kiện，(就) + Kết quả","如果 nêu giả thiết, vế sau thường có 就.",["如果|明天|下雨|，|我们|就|不|去|了|。",5,"才/都/还","Nếu mai mưa thì chúng ta không đi nữa."],["如果|你|有|时间|，|就|来|我家|吧|。",5,"才/都/也","Nếu bạn có thời gian thì đến nhà tôi nhé."]],
+["g311",3,"比…多了","So sánh mức độ","A + 比 + B + Tính từ + 多了/一点儿","Trong câu 比, dùng 多了 (hơn nhiều), 一点儿 (hơn một chút) sau tính từ.",["他|比|我|高|多了|。",4,"很/非常/真","Anh ấy cao hơn tôi nhiều."],["今天|比|昨天|冷|一点儿|。",4,"很/非常/有点儿","Hôm nay lạnh hơn hôm qua một chút."]],
+["g312",3,"跟…一样","So sánh ngang bằng","A + 跟 + B + 一样 (+ Tính từ)","跟…一样 diễn tả A giống B.",["我|跟|他|一样|高|。",3,"比/很/非常","Tôi cao bằng anh ấy."],["这|本|书|跟|那|本|一样|有意思|。",6,"比/很/更","Quyển sách này hay như quyển kia."]],
+["g313",3,"只要…就…","Chỉ cần… là…","只要 + Điều kiện，就 + Kết quả","Điều kiện đủ: chỉ cần A thì sẽ B.",["只要|努力|，|就|能|成功|。",3,"才/都/也","Chỉ cần cố gắng là có thể thành công."],["只要|你|喜欢|，|就|买|吧|。",4,"才/都/也","Chỉ cần bạn thích thì mua đi."]],
+["g314",3,"连…都/也…","Ngay cả… cũng…","连 + A + 都/也 + Động từ","Nhấn mạnh trường hợp cực đoan.",["他|连|饭|都|没|吃|。",1,"跟/和/把","Anh ấy ngay cả cơm cũng chưa ăn."],["这|个|问题|连|孩子|都|知道|。",3,"跟/和/把","Câu hỏi này ngay cả trẻ con cũng biết."]],
+["g315",3,"不但…而且…","Không những… mà còn…","不但 + A，而且 + B","Quan hệ tăng tiến: B ở mức cao hơn A.",["他|不但|会|说|汉语|，|而且|说|得|很|好|。",6,"但是/所以/因为","Anh ấy không những biết nói tiếng Trung mà còn nói rất giỏi."],["这里|不但|便宜|，|而且|很|干净|。",4,"但是/所以/因为","Ở đây không những rẻ mà còn rất sạch."]],
+["g316",3,"为了","Mục đích với 为了","为了 + Mục đích，…","为了 nêu mục đích của hành động.",["为了|学|好|汉语|，|他|每天|练习|。",0,"因为/所以/如果","Để học tốt tiếng Trung, ngày nào anh ấy cũng luyện tập."],["我|为了|身体|健康|，|每天|跑步|。",1,"对/跟/从","Vì sức khỏe, ngày nào tôi cũng chạy bộ."]],
+["g317",3,"有点儿","有点儿 + Tính từ","有点儿 + Tính từ (không như ý)","有点儿 đứng trước tính từ, thường mang ý không hài lòng; 一点儿 đứng sau tính từ.",["今天|有点儿|冷|。",1,"一点儿/多了/一下","Hôm nay hơi lạnh."],["这|件|衣服|有点儿|贵|。",3,"一点儿/多了/一下","Cái áo này hơi đắt."]],
+["g318",3,"先…然后…","Trình tự hành động","先 + A，然后/再 + B","Nêu thứ tự trước sau của hành động.",["我们|先|吃饭|，|然后|去|看|电影|。",4,"所以/但是/因为","Chúng ta ăn cơm trước rồi đi xem phim."],["你|先|洗手|，|再|吃饭|。",4,"又/还/也","Con rửa tay trước rồi ăn cơm."]],
+["g319",3,"下来/进来","Bổ ngữ xu hướng","Động từ + 上/下/进/出 + 来/去","来 hướng về người nói, 去 hướng ra xa người nói.",["他|从|楼上|走|下来|了|。",4,"上来/上去/进去","Anh ấy từ trên lầu đi xuống."],["外面|太|冷|了|，|快|进来|吧|。",6,"出去/下去/上去","Ngoài trời lạnh quá, mau vào đi."]],
+["g320",3,"V不懂","Bổ ngữ khả năng","Động từ + 得/不 + Bổ ngữ","V得… (làm được), V不… (không làm được).",["他|说|得|太|快|，|我|听|不|懂|。",8,"没/别/很","Anh ấy nói nhanh quá, tôi nghe không hiểu."],["黑板|上|的|字|太|小|，|我|看|不|清楚|。",9,"没/别/很","Chữ trên bảng nhỏ quá, tôi nhìn không rõ."]]];
+const GRAM=GRAM_RAW.map(([id,l,n,name,f,e,...ex])=>({id,l,n,name,f,e,ex:ex.map(([z,b,d,v])=>{const t=z.split("|");return{t,b,d:d.split("/"),v,z:t.join("")}})}));
 const $=id=>document.getElementById(id);
 const KEY="tutien-hanngu-v2";
 const today=()=>new Date().toLocaleDateString("sv");
@@ -1903,9 +1984,9 @@ function renderQ(q,px,cb){
   pr.textContent=q.type===1?w.v:q.type===3?"🔊":w.h;
   pr.onclick=()=>{if(q.type!==1)speak(w.h)};
   $(px+"Hint").textContent=q.type===0?w.p:q.type===3?"Chạm để nghe lại":"";
-  $(px+"Ask").textContent=["Chọn nghĩa đúng","Chọn chữ Hán đúng","Chọn phiên âm đúng","Nghe và chọn chữ Hán","Chọn âm Hán Việt đúng"][q.type];
+  $(px+"Ask").textContent=q.ask||["Chọn nghĩa đúng","Chọn chữ Hán đúng","Chọn phiên âm đúng","Nghe và chọn chữ Hán","Chọn âm Hán Việt đúng"][q.type];
   const box=$(px+"Opts");box.innerHTML="";
-  q.opts.forEach(o=>{const b=document.createElement("button");b.className="opt"+(q.f==="h"?" han":"");b.textContent=o[q.f];b.onclick=()=>cb(o,b);box.appendChild(b)});
+  q.opts.forEach(o=>{const b=document.createElement("button");b.className="opt"+(q.f==="h"?" han":"");b.textContent=o[q.f];if(o===q.correct)b.dataset.ok="1";b.onclick=()=>cb(o,b);box.appendChild(b)});
   if(q.type===3)setTimeout(()=>speak(w.h),250);
 }
 function reveal(q,px,o,btn){
@@ -2376,10 +2457,10 @@ function drawBoss(){$("foeHp").style.width=(B.hp/B.max*100)+"%";$("foeHpT").text
 function bossPsg(mode){const c=BPSG.filter(p=>p.l===B.l&&!B.used.has(p));if(c.length){const P=c[Math.random()*c.length|0];B.used.add(P);const qq=P.qs[Math.random()*P.qs.length|0];return{psg:1,P,qq,mode,opts:shuffle(qq[2].slice()),correct:qq[2][0]}}return pickPsg(B.l,mode)}
 function bossNext(){if(!B)return;B.lock=false;B.n=(B.n||0)+1;let q=null;const dot=tickDot(B);if(dot){fxFloat($("foeArt"),`−${dot} ☠️`,"#9CCC65");drawBoss();if(B.hp<=0){const F=B;setTimeout(()=>B===F&&winBoss(),500);return}}
   if(B.n%3===0)q=bossPsg((B.n/3)%2?"r":"l");
-  if(!q)q=makeQ(unlockedWords().filter(w=>w.l===B.l),Math.random()*6|0);
+  if(!q){let L=unlockedWords().filter(w=>w.l===B.l);if(L.length<8)L=W.filter(w=>w.l===B.l);q=fightQ(B,L)}
   B.q=q;B.dur=(q.psg?(q.mode==="r"?45000:60000):q.typing?25000:12000)*(1+stats().time);
   $("bFb").innerHTML=q.psg?'<span class="bad">Đối thủ tung đại chiêu! Trả lời đúng: phản đòn ×4 sát thương; sai: chịu ×2 sát thương</span>':"";renderQ(q,"b",bossAns);
-  if(stats().hint&&!q.psg&&!q.typing){const bs=[...document.querySelectorAll("#bOpts .opt")].filter(b=>b.dataset.o!==q.correct);if(bs.length>1){const g=bs[Math.random()*bs.length|0];g.disabled=true;g.classList.add("gone")}}
+  hintPet("b",q);if(!$("bTag"))$("bPrompt").parentElement.insertAdjacentHTML("beforebegin",'<div class="qtag" id="bTag"></div>');$("bTag").textContent=qTagName(q);
   if(q.typing){const hb=$("bHint2");if(hb)hb.remove();$("bAsk").textContent="Gõ chữ Hán đúng với nghĩa trên"}
   B.t0=Date.now();clearInterval(B.tm);
   B.tm=setInterval(()=>{const el=Date.now()-B.t0,left=1-el/B.dur;$("timer").style.width=Math.max(0,left*100)+"%";$("bTimeT").textContent=`Còn ${Math.max(0,Math.ceil((B.dur-el)/1000))} giây`;if(left<=0)bossAns(null,null)},100)}
@@ -2719,6 +2800,18 @@ const HUNT_T=[
 let H=null,wSeg="t";
 function setWSeg(v){wSeg=v;document.querySelectorAll("#wSeg button").forEach(b=>b.classList.toggle("on",b.dataset.ws===v));$("tyBox").style.display=v==="t"?"":"none";$("huntBox").style.display=v==="h"?"":"none";if(v==="h")renderHunt();else if(H){huntEnd(true)}}
 
+/* fight helpers */
+/* ---------- DẠNG BÀI TRONG TRẬN ĐẤU: xoay vòng đủ dạng + Thanh điệu ---------- */
+const FTV={a:"āáǎà",e:"ēéěè",i:"īíǐì",o:"ōóǒò",u:"ūúǔù","ü":"ǖǘǚǜ"},FTMAP={};
+Object.entries(FTV).forEach(([b,t])=>[...t].forEach((c,i)=>FTMAP[c]=[b,i]));
+function toneVariants(p){const ch=[...p],pos=ch.map((c,i)=>FTMAP[c]?i:-1).filter(i=>i>=0);if(!pos.length)return[];const out=new Set();let g=0;
+  while(out.size<3&&g++<60){const a=[...ch],k=pos[Math.random()*pos.length|0],[b,t]=FTMAP[a[k]];let nt=Math.random()*4|0;if(nt===t)nt=(nt+1)%4;a[k]=FTV[b][nt];
+    if(pos.length>1&&Math.random()<.35){const k2=pos.find(x=>x!==k),[b2,t2]=FTMAP[a[k2]];a[k2]=FTV[b2][(t2+1+(Math.random()*3|0))%4]}const v=a.join("");if(v!==p)out.add(v)}return[...out]}
+function toneQ(list){const L2=list.filter(w=>[...w.h].length>=2);if(L2.length>=4)list=L2;for(let k=0;k<15;k++){const w=pickWord(list),vs=toneVariants(w.p);if(vs.length>=3)return{w,type:2,f:"p",tone:1,ask:"Chọn pinyin đúng thanh điệu",opts:shuffle([w,...vs.slice(0,3).map(p=>({h:w.h,p,v:w.v,k:w.k+"~"+p}))]),correct:w}}return null}
+function fightQ(F,list){if(!F.cyc||!F.cyc.length)F.cyc=shuffle([0,1,2,3,4,5,6]);const t=F.cyc.pop();return t===6?(toneQ(list)||makeQ(list,2)):makeQ(list,t)}
+const qTagName=q=>q.psg?(q.mode==="r"?"📖 Đọc hiểu · phản đòn ×4":"🎧 Nghe hiểu · phản đòn ×4"):q.tone?"🎵 Thanh điệu":q.typing?"⌨️ Đánh máy · sát thương ×2":["🀄 Hán → Nghĩa","📝 Nghĩa → Hán","🔤 Pinyin","👂 Nghe từ","🏯 Hán Việt"][q.type]||"";
+function hintPet(px,q){if(!stats().hint||q.psg||q.typing)return;const bs=[...document.querySelectorAll("#"+px+"Opts .opt")].filter(b=>b.dataset.ok!=="1");if(bs.length>1){const g=bs[Math.random()*bs.length|0];g.disabled=true;g.classList.add("gone")}}
+
 /* ---------- KHIÊU CHIẾN SĂN THƯỞNG v2: bãi săn theo cảnh giới, câu hỏi đa dạng ---------- */
 const HREG=[
  {n:"Rừng Trúc Ngoại Môn",lv:1,m:[[["🐗","Dã Trư Yêu"],["🐸","Độc Thiềm"],["🐀","Thử Yêu"]],[["🐺","Thanh Lang Tinh Anh"],["🦇","Huyết Bức Tinh Anh"]],[["🐻","Hắc Hùng Thủ Lĩnh"]]]},
@@ -2735,7 +2828,7 @@ const hRegOpen=r=>!!S.admin||S.realm>=r;
 const hStat=(r,ti)=>{const t=HTIER[ti];return{hp:huntHP(r,ti),atk:t.a[0]+t.a[1]*r,st:Math.round(t.st*(1+.5*r)),xu:t.xu+(r>=6&&ti>0?1:0)}};
 let hReg=null;
 function renderHunt(){if(H)return huntDraw();if(hReg==null||!hRegOpen(hReg))hReg=Math.min(S.realm,HREG.length-1);const rec=S.hunt||{},reg=HREG[hReg];
-  $("huntBox").innerHTML=`<p class="muted small">Chọn bãi săn theo cảnh giới. Bãi săn cao hơn tu vi hiện tại sẽ bị khóa. Câu hỏi đa dạng như Tu luyện: Hán → Nghĩa, Nghĩa → Hán, Pinyin, Hán Việt, Nghe, Đánh máy; cứ 4 câu có một bài đọc hoặc nghe gây sát thương ×4.</p>
+  $("huntBox").innerHTML=`<p class="muted small">Chọn bãi săn theo cảnh giới. Bãi săn cao hơn tu vi hiện tại sẽ bị khóa. Mỗi trận xoay vòng đủ <b>9 dạng bài</b>: Hán → Nghĩa, Nghĩa → Hán, Pinyin, Thanh điệu, Hán Việt, Nghe từ, Đánh máy (sát thương ×2), và cứ 4 câu có một bài Đọc hiểu hoặc Nghe hiểu (phản đòn ×4).</p>
   <div class="chips hregs">${HREG.map((g,i)=>{const op=hRegOpen(i);return`<button class="chip${i===hReg?" on":""}" data-hr="${i}" ${op?"":"disabled"}>${op?"":"🔒 "}${R[i][0]} · ${g.n}</button>`}).join("")}</div>
   <div class="panel"><b>⚔️ Chỉ số của bạn</b>${statsHTML()}<div class="pillslot">${pillBar()}</div><button class="btn" id="hGear" style="margin-top:4px">🛡️ Đổi trang bị / thần thú</button></div>
   <h3 style="margin:10px 0 6px">${reg.n} <small class="muted">· câu hỏi HSK${reg.lv}</small></h3>
@@ -2751,7 +2844,7 @@ function huntDraw(){const h=H,t=h.t,p=curPet();
     <div class="hmid han">VS</div>
     <div class="hside"><div class="hme" id="hMe">${avatarSVG(S.realm,true)}</div><b>${esc(S.nick||"Bạn")}</b><small id="hMeS"></small><div class="bar j"><i id="hMeHp" style="width:100%"></i></div><small id="hMeT"></small></div></div>
   <div class="combofx" id="comboFx"></div><div class="bar t" style="margin-top:6px"><i id="hTimer" style="width:100%"></i></div>
-  <div class="bq"><button class="prompt han" id="hqPrompt"></button><div class="hint" id="hqHint"></div></div>
+  <div class="qtag" id="hqTag"></div><div class="bq"><button class="prompt han" id="hqPrompt"></button><div class="hint" id="hqHint"></div></div>
   <div class="psg" id="hqPsg"></div><p class="ask" id="hqAsk"></p><div class="opts" id="hqOpts"></div><div class="fb" id="hqFb"></div>
   <div class="pillslot">${pillBar()}</div><button class="btn wide" id="hFlee" style="margin-top:8px">Rút lui</button>`;
   bindPills($("huntBox"));$("hFlee").onclick=()=>{if(confirm("Rút lui khỏi trận săn?"))huntEnd(true)};huntBars()}
@@ -2759,9 +2852,9 @@ function huntBars(){const h=H;if(!h||!$("hMonHp"))return;const st=stats();$("hMo
   $("hMeHp").style.width=Math.max(0,h.php/h.pmax*100)+"%";$("hMeT").textContent=`${Math.round(h.php)}/${h.pmax}${h.shieldHP>0?` · 🔰${h.shieldHP}`:""}`;$("hMeS").textContent=`⚔️ ${st.atk} · 🛡️ ${st.def}${newbieMult()>1.01?` · 🌱×${newbieMult().toFixed(1)}`:""}`;$("hMe").classList.toggle("shielded",h.shieldHP>0)}
 const huntRefreshBars=()=>huntBars();
 function huntNext(){if(!H)return;H.lock=false;H.n++;const dot=tickDot(H);if(dot){fxFloat($("hMon"),`−${dot} ☠️`,"#9CCC65");huntBars();if(H.hp<=0){setTimeout(huntWin,500);return}}
-  let q=null;if(H.n%4===0)q=pickPsg(H.lv,(H.n/4)%2?"r":"l");if(!q)q=makeQ(H.pl,Math.random()*6|0);H.q=q;
+  let q=null;if(H.n%4===0)q=pickPsg(H.lv,(H.n/4)%2?"r":"l");if(!q)q=fightQ(H,H.pl);H.q=q;
   H.dur=(q.psg?(q.mode==="r"?45000:60000):q.typing?25000:12000)*(1+stats().time);$("hqFb").innerHTML=q.psg?'<span class="bad">Quái tung đại chiêu! Đúng: phản đòn ×4; sai: chịu ×2</span>':"";
-  renderQ(q,"hq",huntAns);if(stats().hint&&!q.psg&&!q.typing){const bs=[...document.querySelectorAll("#hqOpts .opt")].filter(b=>b.dataset.o!==q.correct);if(bs.length>1){const g=bs[Math.random()*bs.length|0];g.disabled=true;g.classList.add("gone")}}
+  renderQ(q,"hq",huntAns);hintPet("hq",q);if($("hqTag"))$("hqTag").textContent=qTagName(q);
   H.t0=Date.now();clearInterval(H.tm);H.tm=setInterval(()=>{if(!H)return;const left=1-(Date.now()-H.t0)/H.dur,el=$("hTimer");if(el)el.style.width=Math.max(0,left*100)+"%";if(left<=0)huntAns(null,null)},100)}
 function huntAns(o,btn){if(!H||H.lock)return;H.lock=true;clearInterval(H.tm);const q=H.q;let ok=o===q.correct;if(!ok&&q.typing&&typeof o==="string"&&o&&W.some(x=>x.h===o&&x.v===q.w.v))ok=true;
   reveal(q,"hq",ok&&q.typing?q.w:o,btn);if(q.w){learn(q.w,ok);if(q.type!==3&&!q.typing)speak(q.w.h)}else learnP(ok);checkDaily();touchStreak();
@@ -3088,6 +3181,77 @@ function showcaseHTML(){const CH=CHARS.find(x=>x.id===(S.char||"ch_f"))||CHARS[0
   <div class="sc-info"><b class="sc-name">${esc(S.nick||CH.n)}</b><span>${CH.n} · ${R[S.realm][0]} ${SUB[S.sub||0]}</span><small>👘 ${CO.id==="c0"?"Trang phục gốc":CO.n} · ⚔️ ${w.n}${p?` · 🐾 ${p.n}`:""}</small></div></div>`}
 function renderShowcase(){const el=$("showcase");if(el)el.innerHTML=showcaseHTML()}
 
+
+/* ---------- CÔNG PHÁP · NGỮ PHÁP ---------- */
+const GM_NEED=3,GLV=[1,2,3,4,5,6];
+const gsc=id=>(S.gm||{})[id]||0;
+const gramOpen=l=>!!S.admin||!!S.hskAll||l<=curLv();
+const gramOf=l=>GRAM.filter(g=>g.l===l);
+let GQ=null,gLv=null;
+const TWORDS=new Set(["今天","明天","昨天","每天","现在","晚上","早上","下午","上午","一会儿"]);
+function gStars(id){const n=Math.min(GM_NEED,gsc(id));return"★".repeat(n)+"☆".repeat(GM_NEED-n)}
+function gramHTMLsent(ex,hl){return ex.t.map((t,i)=>i===ex.b&&hl?`<b class="gblank">${esc(t)}</b>`:esc(t)).join("")}
+function renderGram(){if(gLv==null||!gramOpen(gLv))gLv=Math.max(1,Math.min(curLv(),6));const tot=GRAM.length,done=GRAM.filter(g=>gsc(g.id)>=GM_NEED).length;
+  if(GQ)return gqDraw();
+  const pts=gramOf(gLv),ldone=pts.filter(g=>gsc(g.id)>=GM_NEED).length;
+  $("gramBody").innerHTML=`<p class="muted small" style="margin-top:0">Mỗi điểm ngữ pháp là một <b>công pháp</b>. Luyện đúng ${GM_NEED} lần để <b>luyện thành</b>; luyện thành cả tầng sẽ nhận thưởng lớn. Mỗi câu đúng còn cho linh khí (tối đa 20% mỗi tiểu cảnh giới) và linh thạch.</p>
+  <div class="panel"><b>☯️ Đã luyện thành ${done}/${tot} công pháp</b><div class="bar j" style="margin-top:6px"><i style="width:${tot?done/tot*100:0}%"></i></div></div>
+  <div class="chips">${GLV.map(l=>{const n=gramOf(l).length,op=gramOpen(l);return`<button class="chip${l===gLv?" on":""}" data-gl="${l}" ${op&&n?"":"disabled"}>${op?"":"🔒 "}HSK${l}${n?` · ${gramOf(l).filter(g=>gsc(g.id)>=GM_NEED).length}/${n}`:" · sắp có"}</button>`}).join("")}</div>
+  <div class="panel gtier"><div class="row" style="justify-content:space-between;align-items:center"><b>Tầng ${gLv} · ${pts.length} công pháp</b><span class="muted small">Luyện thành ${ldone}/${pts.length}${(S.gmLv||{})[gLv]?" · ✅ Đại thành":""}</span></div>
+    <div class="bar" style="margin:6px 0 10px"><i style="width:${pts.length?ldone/pts.length*100:0}%;background:var(--gold)"></i></div>
+    <button class="btn gold wide" id="gTrain">⚔️ Tu luyện công pháp tầng ${gLv} (10 câu)</button></div>
+  <div class="glist">${pts.map(g=>`<details class="gcard${gsc(g.id)>=GM_NEED?" done":""}"><summary><span class="gpat han">${esc(g.n)}</span><span class="gname">${esc(g.name)}<small>${gStars(g.id)}</small></span></summary>
+    <div class="gform">${esc(g.f)}</div><p class="small">${esc(g.e)}</p>
+    ${g.ex.map(ex=>`<div class="gex"><button class="btn gsp" data-gsp="${esc(ex.z)}" aria-label="Nghe câu">🔊</button><div><div class="han gz">${gramHTMLsent(ex,true)}</div><small class="muted">${esc(ex.v)}</small></div></div>`).join("")}
+    <button class="btn main" data-gone="${g.id}" style="margin-top:6px">Luyện riêng công pháp này (5 câu)</button></details>`).join("")}</div>`;
+  $("gramBody").querySelectorAll("[data-gl]").forEach(b=>b.onclick=()=>{gLv=+b.dataset.gl;sfx("click");renderGram()});
+  $("gramBody").querySelectorAll("[data-gsp]").forEach(b=>b.onclick=e=>{e.preventDefault();speak(b.dataset.gsp)});
+  $("gramBody").querySelectorAll("[data-gone]").forEach(b=>b.onclick=()=>gqStart([GRAM.find(g=>g.id===b.dataset.gone)],5));
+  $("gTrain").onclick=()=>gqStart(pts,10)}
+/* tạo câu hỏi */
+function gqMake(g,pool){const ex=g.ex[Math.random()*g.ex.length|0],ans=ex.t[ex.b],kinds=["fill","fill","which","mean"];
+  const canOrder=ex.t.filter(t=>!/^[，。！？、]$/.test(t)).length<=7&&!ex.t.includes("，");if(canOrder)kinds.push("order","order");
+  const k=kinds[Math.random()*kinds.length|0];
+  if(k==="fill")return{k,g,ex,tag:"✍️ Điền vào chỗ trống",ask:"Chọn từ đúng điền vào chỗ trống",opts:shuffle([ans,...ex.d.slice(0,3)]),ans};
+  if(k==="which"){const wrong=ex.d.slice(0,3).map(d=>ex.t.map((t,i)=>i===ex.b?d:t).join(""));return{k,g,ex,tag:"🔍 Chọn câu đúng",ask:"Câu nào đúng ngữ pháp?",opts:shuffle([ex.z,...wrong]),ans:ex.z}}
+  if(k==="mean"){const others=shuffle(pool.flatMap(x=>x.ex).filter(e=>e!==ex&&e.v!==ex.v)).slice(0,3).map(e=>e.v);if(others.length<3)return gqMake(g,GRAM);return{k,g,ex,tag:"🌐 Chọn nghĩa của câu",ask:"Câu này có nghĩa là gì?",opts:shuffle([ex.v,...others]),ans:ex.v}}
+  const words=ex.t.filter(t=>!/^[，。！？、]$/.test(t)),punct=ex.t.filter(t=>/^[，。！？、]$/.test(t)).join(""),acc=new Set([words.join("")]);
+  if(TWORDS.has(words[1]))acc.add([words[1],words[0],...words.slice(2)].join(""));if(TWORDS.has(words[0]))acc.add([words[1],words[0],...words.slice(2)].join(""));
+  let sh=shuffle(words.slice());for(let i=0;i<5&&acc.has(sh.join(""));i++)sh=shuffle(words.slice());
+  return{k:"order",g,ex,tag:"🧩 Sắp xếp thành câu",ask:"Chạm các từ theo đúng thứ tự",tiles:sh,acc,punct,ans:ex.z}}
+function gqStart(pts,n){if(!pts.length)return;const w=pts.slice().sort((a,b)=>gsc(a.id)-gsc(b.id));const qs=[];for(let i=0;i<n;i++){const g=Math.random()<.6?w[Math.min(w.length-1,(Math.random()*Math.ceil(w.length/2))|0)]:pts[Math.random()*pts.length|0];qs.push(gqMake(g,gramOf(g.l)))}
+  GQ={qs,i:0,ok:0,lock:false,pick:[],gain:0,stones:0,lv:pts[0].l};sfx("up");gqDraw()}
+function gqDraw(){const Q=GQ,q=Q.qs[Q.i];Q.lock=false;Q.pick=[];
+  $("gramBody").innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><b>☯️ ${esc(q.g.n)} · ${esc(q.g.name)}</b><span class="muted small">Câu ${Q.i+1}/${Q.qs.length} · đúng ${Q.ok}</span></div>
+  <div class="bar j" style="margin:6px 0"><i style="width:${Q.i/Q.qs.length*100}%"></i></div>
+  <div class="qtag" style="display:table;margin:8px auto">${q.tag}</div>
+  <div class="panel gqbox">${q.k==="fill"?`<div class="han gqz">${q.ex.t.map((t,i)=>i===q.ex.b?'<span class="gslot">＿＿</span>':esc(t)).join("")}</div><small class="muted">${esc(q.ex.v)}</small>`
+    :q.k==="mean"?`<div class="han gqz">${esc(q.ex.z)} <button class="btn gsp" id="gqSp">🔊</button></div>`
+    :q.k==="order"?`<div class="gorder" id="gqLine"><span class="muted small">Câu của bạn…</span></div><small class="muted">${esc(q.ex.v)}</small>`:`<small class="muted">${esc(q.ex.v)}</small>`}
+    <p class="ask">${q.ask}</p>
+    ${q.k==="order"?`<div class="gtiles" id="gqTiles">${q.tiles.map((t,i)=>`<button class="opt han gtile" data-ti="${i}">${esc(t)}</button>`).join("")}</div><div class="row" style="justify-content:center;margin-top:8px"><button class="btn" id="gqUndo">↩ Xóa bớt</button><button class="btn main" id="gqCheck">Kiểm tra</button></div>`
+      :`<div class="opts${q.k==="which"||q.k==="mean"?" one":""}" id="gqOpts">${q.opts.map((o,i)=>`<button class="opt${q.k==="mean"?"":" han"}${q.k==="which"||q.k==="mean"?" long":""}" data-oi="${i}">${esc(o)}</button>`).join("")}</div>`}
+    <div class="fb" id="gqFb"></div></div>
+  <button class="btn wide" id="gqQuit" style="margin-top:10px">Kết thúc tu luyện</button>`;
+  $("gqQuit").onclick=()=>gqEnd(true);if($("gqSp"))$("gqSp").onclick=()=>speak(q.ex.z);
+  if(q.k==="order"){const line=$("gqLine"),draw=()=>{line.innerHTML=Q.pick.length?Q.pick.map(i=>`<span class="han gpick">${esc(q.tiles[i])}</span>`).join(""):'<span class="muted small">Câu của bạn…</span>';document.querySelectorAll(".gtile").forEach(b=>b.disabled=Q.pick.includes(+b.dataset.ti)||Q.lock)};
+    document.querySelectorAll(".gtile").forEach(b=>b.onclick=()=>{if(Q.lock)return;Q.pick.push(+b.dataset.ti);sfx("click");draw();if(Q.pick.length===q.tiles.length)gqAnswer(Q.pick.map(i=>q.tiles[i]).join(""))});
+    $("gqUndo").onclick=()=>{if(Q.lock)return;Q.pick.pop();draw()};$("gqCheck").onclick=()=>{if(Q.pick.length)gqAnswer(Q.pick.map(i=>q.tiles[i]).join(""))}}
+  else document.querySelectorAll("#gqOpts .opt").forEach(b=>b.onclick=()=>gqAnswer(q.opts[+b.dataset.oi],b))}
+function gqAnswer(v,btn){const Q=GQ;if(!Q||Q.lock)return;Q.lock=true;const q=Q.qs[Q.i],ok=q.k==="order"?q.acc.has(v):v===q.ans;
+  S.gm=S.gm||{};checkDaily();touchStreak();
+  if(ok){Q.ok++;const before=gsc(q.g.id);S.gm[q.g.id]=before+1;S.stones+=1;Q.stones++;S.st.c++;S.st.t++;S.daily.c++;const g=r1(Math.max(1,need()*.03)*mult()),add=qiAdd("cp",g);Q.gain=r1(Q.gain+add);sfx("ok");
+    if(before+1===GM_NEED){setTimeout(()=>{fxText(`Luyện thành: ${q.g.name}`,$("gqFb"),"big");sfx("up")},200)}}
+  else{S.st.t++;sfx("bad");S.gm[q.g.id]=Math.max(0,gsc(q.g.id)-(gsc(q.g.id)>=GM_NEED?0:1))}
+  if(q.k==="order"){$("gqLine").classList.add(ok?"ok":"no");document.querySelectorAll(".gtile").forEach(b=>b.disabled=true)}
+  else document.querySelectorAll("#gqOpts .opt").forEach((b,i)=>{b.disabled=true;if(q.opts[i]===q.ans)b.classList.add("ok")});if(btn&&!ok)btn.classList.add("no");
+  $("gqFb").innerHTML=(ok?'<span class="good">Chính xác! +1 💎</span>':'<span class="bad">Chưa đúng.</span>')+`<div class="gans"><div class="han gz">${gramHTMLsent(q.ex,true)}</div><small class="muted">${esc(q.ex.v)} · ${esc(q.g.f)}</small> <button class="btn gsp" id="gqSp2">🔊</button></div><button class="btn main" id="gqNext" style="margin-top:8px">${Q.i+1<Q.qs.length?"Câu tiếp":"Hoàn thành"}</button>`;
+  $("gqSp2").onclick=()=>speak(q.ex.z);$("gqNext").onclick=()=>{Q.i++;if(Q.i>=Q.qs.length)gqEnd(false);else gqDraw()};
+  if(ok)speak(q.ex.z);save();renderTop()}
+function gqEnd(quit){const Q=GQ;GQ=null;if(!Q)return renderGram();const l=Q.lv,pts=gramOf(l);S.gmLv=S.gmLv||{};let bonus="";
+  if(!S.gmLv[l]&&pts.length&&pts.every(g=>gsc(g.id)>=GM_NEED)){S.gmLv[l]=Date.now();const st=150*l,xu=2*l;S.stones+=st;S.xu=XU()+xu;bonus=` ☯️ Đại thành công pháp tầng ${l}! Nhận thêm ${st} 💎 và ${xu} 🔮.`;fxWin();sfx("win")}
+  save();renderTop();renderGram();if(Q.i>0||bonus)modal(quit?"Dừng tu luyện công pháp":"Tu luyện công pháp xong","法",`Đúng ${Q.ok}/${Math.min(Q.i+(quit?0:0),Q.qs.length)||Q.qs.length} câu · +${Q.stones} 💎 · +${Q.gain} linh khí.${bonus}`)}
+
 /* ---------- TRÂN BẢO CÁC ---------- */
 let SHT="char";
 const own=id=>id.startsWith("ch_")?ownChar(id):(!!(S.own||{})[id]||["c0","m0","s0","realm","none"].includes(id));
@@ -3302,7 +3466,18 @@ let SK=null;
 function prevContent(T){const L=LVOF[T],rs=LVOF.map((x,i)=>x===L?i:-1).filter(i=>i>=0),start=(T-rs[0])*4,list=W.filter(w=>w.l===L),tot=rs.length*4,nPrev=Math.ceil(list.length*start/tot);
   const words=W.filter(w=>w.l<L&&w.l!==7).concat(list.slice(0,nPrev)),psg=PSG.filter(p=>p.l<L||(p.l===L&&p.s<start));return{words,psg}}
 function showView(id){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id===id));document.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x.dataset.v===id));curView=id;window.scrollTo(0,0)}
-function openSkip(){if(trib){toast("Hãy hoàn thành khảo hạch hoặc thiên kiếp trước");return}if(S.realm>=R.length-1)return;if(!baseOK(S.realm+1)){showReq(S.realm+1,"Chưa đủ căn cơ để vượt cấp");return}
+
+function skipJumpHTML(){return`<div class="panel"><b>🔑 Vượt cấp bằng mật lệnh</b><p class="small muted" style="margin:6px 0">Chọn cảnh giới và tầng muốn đến, nhập mật khẩu để chuyển thẳng (không cần làm khảo nghiệm).</p>
+  <div class="row"><select id="skJR" class="search" style="flex:1">${R.map((r,i)=>`<option value="${i}" ${i===S.realm?"selected":""}>${r[0]} (HSK${LVOF[i]})</option>`).join("")}</select>
+  <select id="skJS" class="search" style="width:auto">${SUB.map((n,i)=>`<option value="${i}">${n}</option>`).join("")}</select></div>
+  <div class="row" style="margin-top:8px"><input id="skJP" class="search" type="password" placeholder="Mật khẩu" autocomplete="off" style="flex:1"><button class="btn gold" id="skJGo">Vượt cấp</button></div></div>`}
+function bindSkipJump(){const go=()=>{const r=+$("skJR").value,sb=+$("skJS").value,pw=($("skJP").value||"").trim();if(pw!=="khanh2k3"){toast("Mật khẩu không đúng");sfx("bad");return}
+    S.realm=Math.max(0,Math.min(R.length-1,r));S.sub=Math.max(0,Math.min(3,sb));qiReset();S.qiCnt={};save();lastAva=-1;SK=null;renderAll();showView("vTrain");sfx("up");setTimeout(()=>{fxPillar($("medit"));fxBurst($("medit"))},200);
+    modal("Vượt cấp thành công","越",`Đạo hữu đã chuyển đến ${R[S.realm][0]} ${SUB[S.sub]} (HSK${LVOF[S.realm]}).`)};
+  $("skJGo").onclick=go;$("skJP").onkeydown=e=>{if(e.key==="Enter")go()}}
+function openSkipJumpOnly(msg){SK=null;showView("vSkip");$("skQuit").textContent="Quay lại";$("skTitle").textContent="Khảo nghiệm vượt cấp";$("skRun").style.display="none";$("skIntro").style.display="";
+  $("skIntro").innerHTML=(msg?`<div class="panel"><p style="margin:0">${msg}</p></div>`:"")+skipJumpHTML();bindSkipJump()}
+function openSkip(){if(trib){toast("Hãy hoàn thành khảo hạch hoặc thiên kiếp trước");return}if(S.realm>=R.length-1){openSkipJumpOnly("Đạo hữu đã ở cảnh giới cao nhất, không còn khảo nghiệm vượt cấp.");return}if(!baseOK(S.realm+1)){openSkipJumpOnly(`Chưa đủ căn cơ để làm khảo nghiệm vượt cấp lên ${R[S.realm+1][0]}. Hãy hoàn thành yêu cầu ở mục Căn cơ, hoặc dùng mật lệnh bên dưới.`);return}
   const T=S.realm+1,c=prevContent(T),nr=Math.min(20,c.psg.length*2),hw=[...new Map(c.words.map(w=>[w.h,w])).values()],nt=Math.min(50,hw.length);
   SK={T,c,nr,nt,rneed:Math.ceil(nr*.9),tneed:nt>=50?46:Math.floor(nt*.9)+1,hw};
   showView("vSkip");$("skQuit").textContent="Quay lại";$("skTitle").textContent=`Vượt cấp lên ${R[T][0]}`;$("skRun").style.display="none";$("skIntro").style.display="";
@@ -3311,8 +3486,8 @@ function openSkip(){if(trib){toast("Hãy hoàn thành khảo hạch hoặc thiê
   <ol class="rules"><li><b>Đọc hiểu:</b> ${nr} câu từ các bài đọc ngẫu nhiên, cần đúng ít nhất ${SK.rneed} câu (90%).</li>
   <li><b>Gõ chữ Hán:</b> ${nt} từ ngẫu nhiên, nhìn nghĩa và gõ chữ Hán, cần đúng ít nhất ${SK.tneed} từ.</li>
   <li>Không có gợi ý, không nghe phát âm, không dùng đan dược. Trượt phần 1 thì dừng luôn.</li></ol></div>
-  <button class="btn gold wide" id="skGo" style="margin-top:12px">Bắt đầu khảo nghiệm</button>`;
-  $("skGo").onclick=skStart}
+  <button class="btn gold wide" id="skGo" style="margin-top:12px">Bắt đầu khảo nghiệm</button><div style="margin-top:14px">${skipJumpHTML()}</div>`;
+  $("skGo").onclick=skStart;bindSkipJump()}
 function skStart(){const ps=shuffle(SK.c.psg.slice()),rq=[];ps.forEach(P=>rq.push({P,qq:P.qs[Math.random()*P.qs.length|0]}));
   if(rq.length<SK.nr)ps.forEach(P=>P.qs.forEach(qq=>{if(rq.length<SK.nr&&!rq.some(x=>x.qq===qq))rq.push({P,qq})}));
   Object.assign(SK,{phase:1,i:0,ok:0,bad:0,rq:shuffle(rq.slice(0,SK.nr)),tw:shuffle(SK.hw.slice()).slice(0,SK.nt)});
@@ -3498,7 +3673,7 @@ document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id===curView));
   window.scrollTo(0,0);
   if(curView==="vWrite"){renderTySrc();if(!TY)typeNext()}
-  if(curView==="vLib")setLibTab(libTab);if(curView==="vShop")renderShop();renderShowcase();if($("cvStats"))$("cvStats").innerHTML=`<b>⚔️ Thuộc tính nhân vật</b> <small class="muted">(tăng theo cảnh giới, trang bị và thần thú)</small>${statsHTML()}${gearHTML()}<div class="row" style="margin-top:8px"><button class="btn" onclick="openShop('gear')">🛡️ Trang bị</button><button class="btn" onclick="openShop('pet')">🐾 Thần thú (${XU()} 🔮)</button></div>`;if(curView==="vQuest")renderQuest();if(curView==="vBase"){renderBase();if(!BASE().hi){BASE().hi=1;save();sage("Căn cơ vững thì tu vi mới cao. Hãy học kỹ phát âm và bộ thủ trước nhé!",true)}}if(curView==="vCave")renderCave();if(curView==="vBoss")renderBosses();
+  if(curView==="vLib")setLibTab(libTab);if(curView==="vShop")renderShop();renderShowcase();if($("cvStats"))$("cvStats").innerHTML=`<b>⚔️ Thuộc tính nhân vật</b> <small class="muted">(tăng theo cảnh giới, trang bị và thần thú)</small>${statsHTML()}${gearHTML()}<div class="row" style="margin-top:8px"><button class="btn" onclick="openShop('gear')">🛡️ Trang bị</button><button class="btn" onclick="openShop('pet')">🐾 Thần thú (${XU()} 🔮)</button></div>`;if(curView==="vQuest")renderQuest();if(curView==="vBase"){renderBase();if(!BASE().hi){BASE().hi=1;save();sage("Căn cơ vững thì tu vi mới cao. Hãy học kỹ phát âm và bộ thủ trước nhé!",true)}}if(curView==="vCave")renderCave();if(curView==="vBoss")renderBosses();if(curView==="vGram")renderGram();
 });
 
 function renderAll(){applySkin();if($("trackSel"))$("trackSel").innerHTML=MTRACKS.filter(m=>own(m.id)).map(m=>`<option value="${m.id}" ${(S.track||"m0")===m.id?"selected":""}>${m.n}</option>`).join("");renderTop();renderChips();renderBosses();renderCave();if(curView==="vLib")renderLib()}
