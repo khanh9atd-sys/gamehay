@@ -1,0 +1,5 @@
+APP 2 · HỌC TIẾNG TRUNG · HSK 1–6
+Tải nguyên THƯ MỤC "hoc" (gồm index.html, manifest.webmanifest, sw.js, icons/) lên kho GitHub, đặt cạnh index.html của game.
+Địa chỉ: https://<tài-khoản>.github.io/<tên-kho>/hoc/
+Android: Chrome > nút "Cài app" hoặc menu ⋮ > "Cài đặt ứng dụng". iPhone: Safari > Chia sẻ > "Thêm vào MH chính".
+(Cũng có thể đặt nội dung thư mục "hoc" ở gốc một kho GitHub riêng, app vẫn chạy đúng.)
