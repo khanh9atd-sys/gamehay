@@ -521,6 +521,7 @@ html:root[data-skin="s5"]{--paper:#140A0C;--paper2:#22100F;--ink:#F2E6E4;--muted
 .gorder.ok{border-color:var(--jade);background:var(--jade-soft)}.gorder.no{border-color:var(--cinnabar)}.gpick{font-size:20px;padding:2px 8px;border-radius:8px;background:color-mix(in srgb,var(--gold) 16%,transparent)}
 .gtiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.gtile{min-width:56px;font-size:20px}.gans{margin-top:8px;padding:8px;border-radius:10px;background:var(--paper)}
 .tabs button{min-width:0}@media (max-width:420px){.tabs button{font-size:9px;letter-spacing:-.2px;white-space:nowrap;padding-left:0;padding-right:0}.tabs .han{font-size:17px}}
+.tyhint{margin:2px 0}.tyhint small{color:var(--muted);margin-right:4px}
 .qcur{border-color:var(--gold)}.qhd{display:flex;gap:10px;align-items:center}.qhd .han{font-size:22px;font-weight:900;color:var(--cinnabar)}
 .qstory{line-height:1.7;font-size:15px}.qlock{opacity:.55}.bio p{line-height:1.7}
 .shopico{display:inline-block;white-space:nowrap;margin-top:2px;padding:1px 8px;border-radius:999px;background:var(--gold);color:#1C1608;font-size:12px;font-weight:700}
@@ -733,9 +734,9 @@ setTimeout(function(){if(!window.__ttOK)window.__bootErr("Game tải quá lâu (
     <div class="tydiff han" id="tyDiff"></div>
   </div>
   <input class="typein han" id="tyIn" lang="zh-CN" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="照着打出来" aria-label="Gõ lại chữ Trung">
-  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn" id="tyPy">Gợi ý pinyin</button><button class="btn" id="tySpk">🔊 Nghe</button><button class="btn" id="tySkip">Bỏ qua</button><button class="btn main" id="tyOk">Kiểm tra</button></div>
+  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn" id="tyPy">💡 Gợi ý (0/3)</button><button class="btn" id="tySpk">🔊 Nghe</button><button class="btn" id="tySkip">Bỏ qua</button><button class="btn main" id="tyOk">Kiểm tra</button></div>
   <p class="muted small" style="text-align:center" id="tyStat"></p>
-  <p class="muted small" style="text-align:center">Nhìn chữ Trung rồi gõ lại bằng bàn phím tiếng Trung (Pinyin), bấm Enter để kiểm tra. Gõ đúng một từ được 1 linh thạch, chép đúng một câu trong Sách cổ (từ 90%) được 2 linh thạch.</p>
+  <p class="muted small" style="text-align:center">Chọn cấp HSK để gõ riêng từng cấp. Chỉ hiện chữ Trung; bấm 💡 Gợi ý để hiện dần pinyin, nghĩa rồi Hán Việt. Gõ lại bằng bàn phím tiếng Trung (Pinyin), bấm Enter để kiểm tra. Gõ đúng một từ được 1 linh thạch, chép đúng một câu trong Sách cổ (từ 90%) được 2 linh thạch.</p>
   </div>
   <div id="huntBox" style="display:none"></div>
 </section>
@@ -825,7 +826,7 @@ setTimeout(function(){if(!window.__ttOK)window.__bootErr("Game tải quá lâu (
       <p style="margin-top:0"><b>👑 Quyền truy cập tối cao</b> <span class="muted small">· mọi cấp HSK, bài đọc/nghe và bí cảnh đã mở</span></p>
       <label class="small muted">Chuyển cảnh giới</label>
       <div class="row" style="margin-top:4px"><select class="search" id="admRealm" style="flex:2"></select><select class="search" id="admSub" style="flex:1"></select></div>
-      <div class="row" style="margin-top:8px"><button class="btn main" id="admApply">Áp dụng</button><button class="btn" id="admQi">Đầy linh khí</button><button class="btn" id="admStone">+1000 linh thạch</button><button class="btn" id="admXu">+100 🔮 Thần Tinh</button><button class="btn" id="admItem">+10 đan dược</button></div>
+      <div class="row" style="margin-top:8px"><button class="btn main" id="admApply">Áp dụng</button><button class="btn" id="admQi">Đầy linh khí</button><button class="btn" id="admStone">+1000 linh thạch</button><button class="btn" id="admXu">+100 🔮 Thần Tinh</button><button class="btn" id="admItem">+10 đan dược</button><button class="btn" id="admBase">🧘 Đả thông 12 kinh mạch</button></div>
       <button class="btn wide" id="admOut" style="margin-top:10px">Đăng xuất</button>
     </div>
   </div>
@@ -1848,6 +1849,40 @@ const GRAM_RAW=[
 ["g319",3,"下来/进来","Bổ ngữ xu hướng","Động từ + 上/下/进/出 + 来/去","来 hướng về người nói, 去 hướng ra xa người nói.",["他|从|楼上|走|下来|了|。",4,"上来/上去/进去","Anh ấy từ trên lầu đi xuống."],["外面|太|冷|了|，|快|进来|吧|。",6,"出去/下去/上去","Ngoài trời lạnh quá, mau vào đi."]],
 ["g320",3,"V不懂","Bổ ngữ khả năng","Động từ + 得/不 + Bổ ngữ","V得… (làm được), V不… (không làm được).",["他|说|得|太|快|，|我|听|不|懂|。",8,"没/别/很","Anh ấy nói nhanh quá, tôi nghe không hiểu."],["黑板|上|的|字|太|小|，|我|看|不|清楚|。",9,"没/别/很","Chữ trên bảng nhỏ quá, tôi nhìn không rõ."]]];
 const GRAM=GRAM_RAW.map(([id,l,n,name,f,e,...ex])=>({id,l,n,name,f,e,ex:ex.map(([z,b,d,v])=>{const t=z.split("|");return{t,b,d:d.split("/"),v,z:t.join("")}})}));
+/* ---------- CÔNG PHÁP HSK4–6 (chủ điểm theo giáo trình “Ngữ pháp tiếng Trung cơ bản”, ví dụ viết mới) ---------- */
+[
+["g401",4,"V起来","起来: bắt đầu một trạng thái","Động từ/Tính từ + 起来","起来 sau động từ hoặc tính từ diễn tả hành động, trạng thái bắt đầu và tiếp diễn.",["她|突然|哭|了|起来|。",4,"下去/上来/出来","Cô ấy bỗng òa khóc."],["天气|渐渐|暖和|起来|了|。",3,"下去/上来/出去","Thời tiết dần ấm lên."]],
+["g402",4,"看起来","看起来: đánh giá qua cảm nhận","看/听/吃/用 + 起来 + Nhận xét","Dùng để nêu nhận xét dựa trên cảm nhận khi nhìn, nghe, ăn, dùng thử.",["这件|衣服|看起来|不错|。",2,"看下去/看出来/看过来","Cái áo này trông được đấy."],["这个|主意|听起来|很|好|。",2,"听下去/听出来/听过来","Ý tưởng này nghe hay đấy."]],
+["g403",4,"就是…也…","Dù… cũng…","就是 + Giả thiết，也 + Kết quả","就是…也… nêu giả thiết nhượng bộ: dù điều đó xảy ra thì kết quả vẫn không đổi.",["就是|下雪|，|我们|也|要|去|。",0,"因为/所以/只有","Dù có tuyết rơi chúng tôi cũng phải đi."],["就是|你|不|说|，|我|也|知道|。",0,"因为/所以/只有","Dù bạn không nói tôi cũng biết."]],
+["g404",4,"不是…就是…","Không phải… thì là…","不是 + A，就是 + B","Chỉ có hai khả năng, không A thì B.",["这|几天|不是|刮风|，|就是|下雨|。",5,"但是/所以/因为","Mấy hôm nay không gió thì mưa."],["周末|他|不是|看书|，|就是|睡觉|。",5,"但是/所以/因为","Cuối tuần anh ấy không đọc sách thì ngủ."]],
+["g405",4,"反而","反而: trái lại","…，(Chủ ngữ) + 反而 + Kết quả ngược","反而 diễn tả kết quả trái với dự đoán thông thường.",["吃|了|药|，|他的|病|反而|更|重|了|。",6,"而且/一边/一下","Uống thuốc rồi, bệnh anh ấy trái lại còn nặng hơn."],["我|帮|了|他|，|他|反而|生气|了|。",6,"而且/一边/一下","Tôi giúp anh ấy, vậy mà anh ấy lại giận."]],
+["g406",4,"否则","否则: nếu không thì","Điều kiện cần làm，否则 + Hậu quả","否则 nối vế sau, nêu hậu quả nếu không làm theo vế trước.",["快|走|吧|，|否则|要|迟到|了|。",4,"但是/因为/虽然","Đi nhanh thôi, nếu không sẽ muộn."],["你|必须|努力|，|否则|考|不|上|大学|。",4,"但是/因为/虽然","Bạn phải cố gắng, nếu không sẽ không đỗ đại học."]],
+["g407",4,"几乎","几乎: hầu như, suýt","几乎 + Động từ/Cụm từ","几乎 nghĩa là “hầu như” hoặc “suýt nữa”.",["他|几乎|每天|都|加班|。",1,"一点儿/有点儿/一下","Hầu như ngày nào anh ấy cũng tăng ca."],["这|件|事|几乎|没有|人|知道|。",3,"一点儿/有点儿/一下","Chuyện này hầu như không ai biết."]],
+["g408",4,"尽量","尽量: cố hết sức","尽量 + Động từ","尽量 diễn tả cố gắng đạt mức cao nhất có thể.",["我|会|尽量|早点儿|回来|。",2,"一下/一点儿/有点儿","Tôi sẽ cố về sớm."],["请|尽量|说|汉语|。",1,"一下/一点儿/有点儿","Hãy cố gắng nói tiếng Trung."]],
+["g409",4,"按照","按照: theo, dựa theo","按照 + Quy định/Kế hoạch + Động từ","按照 nêu căn cứ để làm việc gì.",["请|按照|老师|的|要求|做|。",1,"对于/关于/由于","Hãy làm theo yêu cầu của thầy."],["我们|按照|计划|出发|。",1,"对于/关于/由于","Chúng tôi xuất phát theo kế hoạch."]],
+["g410",4,"毕竟","毕竟: dù sao thì, rốt cuộc","…，毕竟 + Lý do/Sự thật","毕竟 nhấn mạnh một sự thật quan trọng cần được xét đến.",["他|毕竟|是|孩子|，|别|生气|了|。",1,"一下/正在/一起","Dù sao nó cũng là trẻ con, đừng giận nữa."],["这|毕竟|不是|你的|错|。",1,"一下/正在/一起","Dù sao đây cũng không phải lỗi của bạn."]],
+["g411",4,"干脆","干脆: dứt khoát, cứ thế mà","…，干脆 + Quyết định","干脆 diễn tả quyết định thẳng thắn, dứt khoát.",["太|晚|了|，|干脆|别|回去|了|。",4,"因为/虽然/而且","Muộn quá rồi, thôi đừng về nữa."],["既然|买|不到|票|，|干脆|开车|去|吧|。",5,"因为/虽然/而且","Đã không mua được vé thì cứ lái xe đi luôn."]],
+["g501",5,"何况","何况: huống hồ","A 都…，何况 + B (呢)？","何况 dùng để suy rộng: A còn vậy, huống hồ B.",["大人|都|搬|不|动|，|何况|孩子|呢|？",6,"因为/所以/而且","Người lớn còn không khiêng nổi, huống hồ trẻ con?"],["这|个|字|老师|都|不|认识|，|何况|我|呢|？",8,"因为/所以/而且","Chữ này thầy còn không biết, huống hồ tôi?"]],
+["g502",5,"既…又…","既…又…: vừa… vừa…","既 + A + 又/也 + B","Nêu hai đặc điểm hoặc hai mặt cùng tồn tại.",["她|既|聪明|又|努力|。",1,"也/还/很","Cô ấy vừa thông minh vừa chăm chỉ."],["这个|办法|既|省钱|又|省时间|。",2,"也/还/很","Cách này vừa tiết kiệm tiền vừa tiết kiệm thời gian."]],
+["g503",5,"罢了","罢了: chỉ… mà thôi","(只是/不过) + … + 罢了","罢了 ở cuối câu làm nhẹ ý, nghĩa “chỉ vậy thôi”.",["我|只是|开|个|玩笑|罢了|。",5,"了/吗/呢","Tôi chỉ đùa thôi mà."],["他|不过|是|个|孩子|罢了|。",5,"吗/呢/着","Nó chỉ là một đứa trẻ mà thôi."]],
+["g504",5,"趁","趁: nhân lúc","趁 + Thời cơ + Động từ","趁 nghĩa là tận dụng thời cơ, điều kiện thuận lợi.",["趁|天|还|没|黑|，|我们|快|回|家|吧|。",0,"从/在/离","Nhân lúc trời chưa tối, chúng ta mau về nhà."],["你|趁|热|吃|吧|。",1,"从/在/离","Bạn ăn lúc còn nóng đi."]],
+["g505",5,"迟早","迟早: sớm muộn","迟早 + 会 + Động từ","迟早 nghĩa là sớm hay muộn thì việc đó cũng xảy ra.",["这|件|事|迟早|会|被|发现|的|。",3,"已经/正在/曾经","Chuyện này sớm muộn cũng bị phát hiện."],["你|迟早|会|明白|的|。",1,"已经/正在/曾经","Sớm muộn gì bạn cũng sẽ hiểu."]],
+["g506",5,"简直","简直: quả thực là","简直 + Cụm từ (mang tính cường điệu)","简直 nhấn mạnh mức độ gần như tuyệt đối, có ý cường điệu.",["这里|的|风景|简直|太|美|了|！",3,"几乎/差不多/一点儿","Phong cảnh ở đây quả thực đẹp quá!"],["他|简直|像|个|孩子|。",1,"一点儿/一下/一边","Anh ấy quả thực như một đứa trẻ."]],
+["g507",5,"反正","反正: đằng nào cũng","反正 + Sự thật không đổi","反正 nhấn mạnh trong mọi trường hợp kết quả vẫn vậy.",["反正|没|事|，|我|陪|你|去|吧|。",0,"虽然/但是/而且","Đằng nào cũng rảnh, tôi đi cùng bạn."],["不管|你|信|不|信|，|反正|我|信|了|。",6,"虽然/但是/而且","Dù bạn tin hay không, dù sao tôi cũng tin rồi."]],
+["g508",5,"果然","果然: quả nhiên","(Dự đoán)，果然 + Kết quả đúng như vậy","果然 cho biết sự việc xảy ra đúng như dự đoán.",["天气|预报|说|有|雨|，|果然|下|雨|了|。",6,"虽然/但是/如果","Dự báo nói có mưa, quả nhiên trời mưa."],["他|说|要|来|，|果然|来|了|。",5,"虽然/但是/如果","Anh ấy nói sẽ đến, quả nhiên đến thật."]],
+["g509",5,"好在","好在: may mà","Tình huống bất lợi，好在 + Điều may","好在 nêu điều kiện thuận lợi giúp giảm bớt khó khăn.",["雨|下|得|很|大|，|好在|我|带|了|伞|。",6,"虽然/如果/即使","Mưa rất to, may mà tôi mang ô."],["路|很|远|，|好在|有|车|。",4,"虽然/如果/即使","Đường rất xa, may mà có xe."]],
+["g510",5,"难怪","难怪: thảo nào","Nguyên nhân，难怪 + Hiện tượng","难怪 diễn tả hiểu ra nguyên nhân nên không còn thấy lạ.",["下|雪|了|，|难怪|这么|冷|。",4,"虽然/如果/即使","Tuyết rơi rồi, thảo nào lạnh thế."],["他|是|北京人|，|难怪|普通话|说|得|这么|好|。",4,"虽然/如果/即使","Anh ấy là người Bắc Kinh, thảo nào nói tiếng phổ thông hay vậy."]],
+["g601",6,"鉴于","鉴于: xét thấy","鉴于 + Tình hình，Quyết định","鉴于 nêu căn cứ cho một quyết định, thường dùng trong văn viết.",["鉴于|天气|原因|，|比赛|推迟|了|。",0,"对于/关于/至于","Do thời tiết, trận đấu bị hoãn."],["鉴于|他|的|表现|，|公司|决定|给|他|升职|。",0,"对于/关于/至于","Xét thành tích của anh ấy, công ty quyết định thăng chức."]],
+["g602",6,"本着","本着: dựa trên tinh thần","本着 + Nguyên tắc/Tinh thần + Động từ","本着 nêu nguyên tắc chỉ đạo cho hành động.",["我们|本着|互利|的|原则|合作|。",1,"对着/朝着/向着","Chúng tôi hợp tác trên nguyên tắc cùng có lợi."],["本着|负责|的|态度|，|他|重新|检查|了|一遍|。",0,"对着/朝着/向着","Với thái độ trách nhiệm, anh ấy kiểm tra lại một lượt."]],
+["g603",6,"从而","从而: từ đó","Nguyên nhân/Biện pháp，从而 + Kết quả","从而 nối vế kết quả, đạt được nhờ biện pháp ở vế trước.",["他|改进|了|方法|，|从而|提高|了|效率|。",5,"因为/虽然/如果","Anh ấy cải tiến phương pháp, nhờ đó nâng cao hiệu suất."],["政府|加大|投入|，|从而|改善|了|环境|。",4,"因为/虽然/如果","Chính quyền tăng đầu tư, từ đó cải thiện môi trường."]],
+["g604",6,"不禁","不禁: không kìm được","(Tình huống)，Chủ ngữ + 不禁 + Động từ","不禁 diễn tả phản ứng tự nhiên không kiềm chế được.",["听|到|这个|消息|，|她|不禁|哭|了|起来|。",6,"不必/不用/不要","Nghe tin này, cô ấy không kìm được bật khóc."],["看|着|老|照片|，|他|不禁|笑|了|。",6,"不必/不用/不要","Nhìn ảnh cũ, anh ấy bất giác mỉm cười."]],
+["g605",6,"不免","不免: khó tránh khỏi","(Tình huống)，不免 + Kết quả","不免 nói một kết quả khó tránh khỏi trong hoàn cảnh đó.",["第一次|上台|，|不免|有些|紧张|。",3,"不必/不用/不要","Lần đầu lên sân khấu, khó tránh khỏi hơi hồi hộp."],["一个人|在|国外|，|不免|会|想|家|。",4,"不必/不用/不要","Một mình ở nước ngoài, khó tránh khỏi nhớ nhà."]],
+["g606",6,"顿时","顿时: lập tức, bỗng chốc","(Sự việc)，顿时 + Thay đổi","顿时 diễn tả sự thay đổi xảy ra ngay lập tức, dùng cho việc đã qua.",["听|了|他|的|话|，|大家|顿时|安静|了|下来|。",7,"曾经/往往/一向","Nghe anh ấy nói, mọi người lập tức im lặng."],["灯|一|灭|，|房间|里|顿时|一片|漆黑|。",6,"曾经/往往/一向","Đèn vừa tắt, căn phòng bỗng chốc tối om."]],
+["g607",6,"姑且","姑且: tạm thời cứ","姑且 + Động từ","姑且 nghĩa là tạm thời cứ làm vậy, vấn đề khác để sau.",["这个|问题|姑且|不|谈|，|我们|先|说|别的|。",2,"曾经/往往/一向","Vấn đề này tạm gác lại, chúng ta nói chuyện khác trước."],["你|姑且|试|一下|吧|。",1,"曾经/往往/一向","Bạn cứ tạm thử xem."]],
+["g608",6,"当面","当面: trực tiếp, trước mặt","当面 + Động từ","当面 nghĩa là làm việc gì trực tiếp trước mặt người đó.",["有|意见|可以|当面|提|。",3,"一面/方面/对面","Có ý kiến thì có thể nói thẳng trực tiếp."],["我|想|当面|向|你|道歉|。",2,"一面/方面/对面","Tôi muốn trực tiếp xin lỗi bạn."]],
+["g609",6,"及早","及早: sớm, kịp thời","及早 + Động từ","及早 khuyên nên làm sớm trước khi quá muộn.",["有|病|要|及早|治疗|。",3,"已经/曾经/往往","Có bệnh phải chữa trị sớm."],["发现|问题|应该|及早|解决|。",3,"已经/曾经/往往","Phát hiện vấn đề nên giải quyết sớm."]],
+["g610",6,"何必","何必: cần gì phải","何必 + Động từ + 呢？","Câu hỏi tu từ, ý là không cần thiết phải làm vậy.",["为|这点|小事|，|你|何必|生气|呢|？",5,"必须/一定/非要","Vì chuyện nhỏ này, bạn cần gì phải giận?"],["你|何必|这样|折磨|自己|呢|？",1,"必须/一定/非要","Bạn cần gì phải tự hành hạ mình như vậy?"]]
+].forEach(([id,l,n,name,f,e,...ex])=>GRAM.push({id,l,n,name,f,e,ex:ex.map(([z,b,d,v])=>{const t=z.split("|");return{t,b,d:d.split("/"),v,z:t.join("")}})}));
 const $=id=>document.getElementById(id);
 const KEY="tutien-hanngu-v2";
 const today=()=>new Date().toLocaleDateString("sv");
@@ -2878,19 +2913,25 @@ function huntEnd(silent){if(H)clearInterval(H.tm);H=null;renderHunt()}
 document.querySelectorAll("#wSeg button").forEach(b=>b.onclick=()=>setWSeg(b.dataset.ws));
 
 /* ---------- LUYỆN GÕ ---------- */
-let TY=null,tySrc="w",tyStat={ok:0,n:0};
-function renderTySrc(){const c=$("tySrc");if(!c)return;c.innerHTML="";[["w","Từ vựng đã lĩnh ngộ"],["b","Câu trong Sách cổ"]].forEach(([v,t])=>{const b=document.createElement("button");b.className="chip"+(tySrc===v?" on":"");b.textContent=t;if(v==="b"&&!BOOKS.length){b.disabled=true;b.title="Hãy mở một cuốn sách trong Tàng Kinh Các › Sách cổ trước"}b.onclick=()=>{tySrc=v;renderTySrc();typeNext()};c.appendChild(b)})}
+let TY=null,tySrc="w",tyStat={ok:0,n:0},tyHintN=0;
+const tyLvOpen=l=>!!S.admin||!!S.hskAll||l<=curLv();
+function renderTySrc(){const c=$("tySrc");if(!c)return;if(S.tyLv==null||!tyLvOpen(S.tyLv))S.tyLv=Math.min(6,curLv());c.innerHTML="";
+  [1,2,3,4,5,6].forEach(l=>{const b=document.createElement("button");b.className="chip"+(tySrc==="w"&&S.tyLv===l?" on":"");b.textContent=(tyLvOpen(l)?"":"🔒 ")+"HSK"+l;b.disabled=!tyLvOpen(l);b.onclick=()=>{tySrc="w";S.tyLv=l;save();renderTySrc();typeNext()};c.appendChild(b)});
+  const b=document.createElement("button");b.className="chip"+(tySrc==="b"?" on":"");b.textContent="📜 Câu trong Sách cổ";if(!BOOKS.length){b.disabled=true;b.title="Hãy mở một cuốn sách trong Tàng Kinh Các › Sách cổ trước"}b.onclick=()=>{tySrc="b";renderTySrc();typeNext()};c.appendChild(b)}
+function tyHintList(){return TY.kind==="w"?[["Pinyin",TY.w.p],["Nghĩa",TY.w.v],["Hán Việt",TY.w.hv||"—"]]:[["Pinyin (tham khảo)",segment(TY.text).map(t=>t.w?t.w.p:(t.cjk?"?":"")).filter(Boolean).join(" ")],["Nguồn",TY.info]]}
+function tyHintStep(){if(!TY||TY.done)return;const steps=tyHintList();if(tyHintN>=steps.length){toast("Đã hiện hết gợi ý");return}
+  tyHintN++;$("tyInfo").innerHTML=steps.slice(0,tyHintN).map(([k,v])=>`<div class="tyhint"><small>${k}</small> <b>${esc(v)}</b></div>`).join("");$("tyPy").textContent=tyHintN<steps.length?`💡 Gợi ý (${tyHintN}/${steps.length})`:"💡 Đã hiện hết";sfx("click")}
 const cjkOnly=s=>(s||"").replace(/[^\u3400-\u9fff]/g,"");
 async function typeNext(){TY=null;$("tyDiff").innerHTML="";const inp=$("tyIn");inp.value="";inp.disabled=false;inp.className="typein han";$("tyPyT").textContent="";$("tyOk").textContent="Kiểm tra";
   if(tySrc==="b"){const s=await pickBookSentence();if(s)TY={kind:"s",text:s.text,info:`${s.book} · ${s.ch}`};else{tySrc="w";renderTySrc()}}
-  if(!TY){const w=pickWord(pool());TY={kind:"w",w,text:w.h,info:w.v+(w.hv?` · Hán Việt: ${w.hv}`:"")}}
-  $("tyH").textContent=TY.text;$("tyH").classList.toggle("long",[...TY.text].length>6);$("tyInfo").textContent=TY.info;
+  if(!TY){let L=W.filter(w=>w.l===(S.tyLv||1)&&/^[\u4e00-\u9fff]+$/.test(w.h));if(!L.length)L=pool();const w=pickWord(L);TY={kind:"w",w,text:w.h,info:w.v}}
+  tyHintN=0;$("tyH").textContent=TY.text;$("tyH").classList.toggle("long",[...TY.text].length>6);$("tyInfo").innerHTML="";$("tyPy").textContent=TY.kind==="w"?"💡 Gợi ý (0/3)":"💡 Gợi ý (0/2)";
   setTimeout(()=>{try{inp.focus({preventScroll:true})}catch(e){}},60)}
 function tyCheck(){if(!TY)return;if(TY.done){typeNext();return}const v=$("tyIn").value;if(!cjkOnly(v)){$("tyIn").focus();toast("Hãy gõ bằng bàn phím tiếng Trung");return}
   const a=[...cjkOnly(TY.text)],b=[...cjkOnly(v)];let ok=0;const html=a.map((c,i)=>{const g=b[i]===c;if(g)ok++;return`<span class="${g?"dk":"dx"}">${c}</span>`}).join("");
   const acc=ok/Math.max(a.length,b.length),pass=TY.kind==="w"?cjkOnly(v)===TY.text:acc>=.9;
   $("tyDiff").innerHTML=html+`<div class="small muted">${Math.round(acc*100)}% chính xác${pass?"":" · chữ đỏ là chỗ gõ sai hoặc thiếu"}</div>`;
-  TY.done=true;tyStat.n++;checkDaily();touchStreak();if(TY.kind==="w")learn(TY.w,pass);
+  TY.done=true;tyStat.n++;$("tyInfo").innerHTML=tyHintList().map(([k,v])=>`<div class="tyhint"><small>${k}</small> <b>${esc(v)}</b></div>`).join("");$("tyPy").textContent="💡 Gợi ý";checkDaily();touchStreak();if(TY.kind==="w")learn(TY.w,pass);
   sfx(pass?"ok":"bad");if(pass){tyStat.ok++;S.typed=(S.typed||0)+1;const st=TY.kind==="s"?2:1;S.stones+=st;S.daily.w++;fxFloat($("tyH"),`+${st} linh thạch`);$("tyIn").classList.add("ok")}else{$("tyIn").classList.add("no");shake($("tyH"));if(TY.kind==="w")S.wrong[TY.w.k]=1}
   $("tyIn").disabled=true;$("tyOk").textContent="Tiếp tục";save();renderTop();$("tyStat").textContent=`Lượt này: đúng ${tyStat.ok}/${tyStat.n}`;
   if(pass)setTimeout(()=>{if(TY&&TY.done)typeNext()},900)}
@@ -2899,7 +2940,7 @@ $("tyIn").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.k
 document.addEventListener("keydown",e=>{if(curView==="vWrite"&&TY&&TY.done&&e.key==="Enter"){e.preventDefault();typeNext()}});
 $("tySkip").onclick=()=>{if(TY&&TY.kind==="w")S.wrong[TY.w.k]=1;save();typeNext()};
 $("tySpk").onclick=()=>TY&&speak(TY.text);
-$("tyPy").onclick=()=>{if(!TY)return;$("tyPyT").textContent=TY.kind==="w"?TY.w.p:segment(TY.text).map(t=>t.w?t.w.p:(t.cjk?"?":"")).filter(Boolean).join(" ")+" (tham khảo)"};
+$("tyPy").onclick=tyHintStep;
 loadBooks().then(()=>{renderTySrc();if(curView==="vLib"&&libTab==="b")renderBooks()});
 
 
@@ -3016,6 +3057,8 @@ const meridOpen=()=>window.__meridFull?12:meridians().filter(m=>m.ok).length;
 const meridHpF=()=>.4+.6*meridOpen()/12;
 /* Căn cốt: mỗi kinh mạch đả thông tăng Công, đủ 12 kinh mạch = Công ×2 */
 const meridAtkF=()=>1+meridOpen()/12;
+/* Công pháp: luyện thành ngữ pháp tăng chỉ số */
+const gramFrac=()=>window.__meridFull?1:(typeof GRAM!=="undefined"&&GRAM.length?GRAM.filter(g=>((S.gm||{})[g.id]||0)>=3).length/GRAM.length:0);
 function meridHTML(){const M=meridians(),o=M.filter(m=>m.ok).length;return`<details class="panel merid"${o<12?"":""}><summary><b>🧘 Thập Nhị Kinh Mạch · Căn cốt ${o}/12</b> <span class="muted small">· Máu ${Math.round(meridHpF()*100)}% · Công ×${meridAtkF().toFixed(2)}</span></summary><p class="small muted" style="margin:6px 0">Mỗi kinh mạch đả thông bằng bài thi Căn cơ sẽ mở thêm căn cốt: <b>+5% máu tối đa</b> và <b>+8,3% Công</b>. Chưa đả thông thì máu chỉ còn 40%, Công ×1; đả thông đủ 12 kinh mạch đạt <b>100% máu và Công ×2</b>.</p><div class="mgrid">${M.map(m=>`<div class="mrow${m.ok?" ok":""}"><span>${m.ok?"🔓":"🔒"} <b>${m.n}</b><small>${m.d}</small></span><em>${m.v}/${m.k}</em></div>`).join("")}</div></details>`}
 
 /* ---------- HỆ THỐNG CHỈ SỐ NHÂN VẬT ---------- */
@@ -3029,7 +3072,7 @@ function stats(){const s=baseStats(),add=it=>{if(!it||!it.st)return;for(const k 
   add(wpnItem());Object.values(S.eq||{}).forEach(id=>{const e=EQUIP.find(x=>x.id===id);if(e&&own(e.id))add(e)});
   const p=PETS.find(x=>x.id===S.pet&&own(x.id));if(p)add(p);
   const co=COSTUMES.find(x=>x.id===S.costume&&x.ch===(S.char||"ch_f")&&own(x.id));if(co)add(co);
-  s.atk=Math.round(s.atk*(1+s.atkP)*(buffOn("tl")?1.5:1)*meridAtkF());s.hp=Math.round(s.hp*(1+s.hpP)*(buffOn("bh")?1.5:1));s.def=Math.round(s.def*(1+s.defP)*(buffOn("ht")?1.5:1));
+  const gf=gramFrac();s.atk=Math.round(s.atk*(1+s.atkP)*(buffOn("tl")?1.5:1)*meridAtkF()*(1+.5*gf));s.hp=Math.round(s.hp*(1+s.hpP)*(buffOn("bh")?1.5:1)*(1+.3*gf));s.def=Math.round(s.def*(1+s.defP)*(buffOn("ht")?1.5:1)*(1+.5*gf));
   if(buffOn("tt")){s.dodge*=1.5;s.crit*=1.5}s.dodge=Math.min(.6,s.dodge);s.crit=Math.min(.8,s.crit);return s}
 const curPet=()=>PETS.find(x=>x.id===S.pet&&own(x.id));
 function dealDmg(mult){const s=stats();let d=s.atk*mult*newbieMult()*(.85+Math.random()*.3),crit=Math.random()<s.crit,shock=s.shock&&Math.random()<s.shock;if(crit)d*=s.critD;if(shock)d*=1.5;return{d:Math.max(1,Math.round(d)),crit,shock}}
@@ -3040,7 +3083,7 @@ function onHit(F,d){const s=stats();let heal=0;if(s.ls)heal+=Math.round(d*s.ls);
   if(s.psn)F.psn=Math.max(F.psn||0,s.psn);if(s.burn){F.burnV=s.burn;F.burnT=3}if(s.frz&&Math.random()<s.frz)F.frozen=1;if(s.shield&&F.combo&&F.combo%5===0)F.shieldHP=Math.round((F.shieldHP||0)+F.pmax*.1);return heal}
 function tickDot(F){let d=0;if(F.psn)d+=F.psn;if(F.burnT>0){d+=F.burnV;F.burnT--}if(d){F.hp=Math.max(0,F.hp-d)}return d}
 function newFight(){const s=stats();return{php:s.hp,pmax:s.hp,shieldHP:Math.round(s.hp*s.shield),psn:0,burnT:0,burnV:0,frozen:0,revived:0}}
-function statsHTML(){const s=stats(),p=curPet(),nb=newbieMult();return`${nb>1.01?`<div class="nbtag">🌱 Phúc lợi Tân thủ: sát thương ×${nb.toFixed(1)}, sát thương nhận ×${(1/Math.sqrt(nb)).toFixed(2)} <small class="muted">(giảm dần khi trang bị mạnh lên và khi lên cảnh giới cao, hết khi lên Luyện Hư)</small></div>`:""}<div class="stgrid"><span>❤️ Máu <b>${s.hp}</b> <small class="muted">(kinh mạch ${meridOpen()}/12)</small></span><span>🧘 Căn cốt: Công <b>×${meridAtkF().toFixed(2)}</b></span><span>🛡️ Giáp <b>${s.def}</b></span><span>⚔️ Công <b>${s.atk}</b></span><span>💥 Bạo kích <b>${Math.round(s.crit*100)}%</b> (×${s.critD.toFixed(1)})</span><span>💨 Né <b>${Math.round(s.dodge*100)}%</b></span><span>🩸 Hút máu <b>${Math.round(s.ls*100)}%</b></span>${s.psn?`<span>☠️ Độc <b>${s.psn}</b>/lượt</span>`:""}${s.burn?`<span>🔥 Thiêu đốt <b>${s.burn}</b>×3</span>`:""}${s.shock?`<span>⚡ Sét <b>${Math.round(s.shock*100)}%</b></span>`:""}${s.frz?`<span>❄️ Băng <b>${Math.round(s.frz*100)}%</b></span>`:""}${s.time?`<span>⏳ Thời gian <b>+${Math.round(s.time*100)}%</b></span>`:""}${s.shield?`<span>🔰 Khiên <b>${Math.round(s.shield*100)}%</b></span>`:""}${s.regen||s.regenP?`<span>💚 Hồi <b>${s.regen?s.regen:""}${s.regenP?Math.round(s.regenP*100)+"%":""}</b>/câu</span>`:""}${s.revive?`<span>🔥 Hồi sinh <b>1 lần</b></span>`:""}</div>${p?`<div class="small petline" style="margin-top:6px">${petSVG(p.id,30)} Thần thú: <b>${p.n}</b> · ${p.d}</div>`:""}`}
+function statsHTML(){const s=stats(),p=curPet(),nb=newbieMult();return`${nb>1.01?`<div class="nbtag">🌱 Phúc lợi Tân thủ: sát thương ×${nb.toFixed(1)}, sát thương nhận ×${(1/Math.sqrt(nb)).toFixed(2)} <small class="muted">(giảm dần khi trang bị mạnh lên và khi lên cảnh giới cao, hết khi lên Luyện Hư)</small></div>`:""}<div class="stgrid"><span>❤️ Máu <b>${s.hp}</b> <small class="muted">(kinh mạch ${meridOpen()}/12)</small></span><span>🧘 Căn cốt: Công <b>×${meridAtkF().toFixed(2)}</b></span><span>☯️ Công pháp: Công/Giáp <b>+${Math.round(gramFrac()*50)}%</b>, Máu <b>+${Math.round(gramFrac()*30)}%</b></span><span>🛡️ Giáp <b>${s.def}</b></span><span>⚔️ Công <b>${s.atk}</b></span><span>💥 Bạo kích <b>${Math.round(s.crit*100)}%</b> (×${s.critD.toFixed(1)})</span><span>💨 Né <b>${Math.round(s.dodge*100)}%</b></span><span>🩸 Hút máu <b>${Math.round(s.ls*100)}%</b></span>${s.psn?`<span>☠️ Độc <b>${s.psn}</b>/lượt</span>`:""}${s.burn?`<span>🔥 Thiêu đốt <b>${s.burn}</b>×3</span>`:""}${s.shock?`<span>⚡ Sét <b>${Math.round(s.shock*100)}%</b></span>`:""}${s.frz?`<span>❄️ Băng <b>${Math.round(s.frz*100)}%</b></span>`:""}${s.time?`<span>⏳ Thời gian <b>+${Math.round(s.time*100)}%</b></span>`:""}${s.shield?`<span>🔰 Khiên <b>${Math.round(s.shield*100)}%</b></span>`:""}${s.regen||s.regenP?`<span>💚 Hồi <b>${s.regen?s.regen:""}${s.regenP?Math.round(s.regenP*100)+"%":""}</b>/câu</span>`:""}${s.revive?`<span>🔥 Hồi sinh <b>1 lần</b></span>`:""}</div>${p?`<div class="small petline" style="margin-top:6px">${petSVG(p.id,30)} Thần thú: <b>${p.n}</b> · ${p.d}</div>`:""}`}
 function gearHTML(){const w=wpn(),slots=["armor","pants","boots","hat"].map(sl=>{const e=EQUIP.find(x=>x.id===(S.eq||{})[sl]&&own(x.id));return`<span class="gslot">${e?e.ic:"▫️"} ${SLOTN[sl]}: <b>${e?e.n:"trống"}</b></span>`}).join("");const hw=HIDDEN.find(h=>h.id===S.hidden&&own(h.id)),p=curPet();
   return`<div class="ggrid"><span class="gslot">⚔️ Vũ khí: <b>${w.n}</b></span>${slots}<span class="gslot">🗡️ Ám khí: <b>${hw?hw.n:"không"}</b></span><span class="gslot">🐾 Thần thú: <b>${p?p.n:"chưa có"}</b></span></div>`}
 
@@ -3194,7 +3237,7 @@ function gramHTMLsent(ex,hl){return ex.t.map((t,i)=>i===ex.b&&hl?`<b class="gbla
 function renderGram(){if(gLv==null||!gramOpen(gLv))gLv=Math.max(1,Math.min(curLv(),6));const tot=GRAM.length,done=GRAM.filter(g=>gsc(g.id)>=GM_NEED).length;
   if(GQ)return gqDraw();
   const pts=gramOf(gLv),ldone=pts.filter(g=>gsc(g.id)>=GM_NEED).length;
-  $("gramBody").innerHTML=`<p class="muted small" style="margin-top:0">Mỗi điểm ngữ pháp là một <b>công pháp</b>. Luyện đúng ${GM_NEED} lần để <b>luyện thành</b>; luyện thành cả tầng sẽ nhận thưởng lớn. Mỗi câu đúng còn cho linh khí (tối đa 20% mỗi tiểu cảnh giới) và linh thạch.</p>
+  $("gramBody").innerHTML=`<p class="muted small" style="margin-top:0">Mỗi điểm ngữ pháp là một <b>công pháp</b>. Luyện đúng ${GM_NEED} lần để <b>luyện thành</b>; luyện thành cả tầng sẽ nhận thưởng lớn. Mỗi câu đúng còn cho linh khí (tối đa 20% mỗi tiểu cảnh giới) và linh thạch. Công pháp luyện thành còn <b>tăng chỉ số chiến đấu</b>: luyện thành toàn bộ được Công +50%, Giáp +50%, Máu +30% (hiện tại: Công/Giáp +${Math.round(gramFrac()*50)}%, Máu +${Math.round(gramFrac()*30)}%).</p>
   <div class="panel"><b>☯️ Đã luyện thành ${done}/${tot} công pháp</b><div class="bar j" style="margin-top:6px"><i style="width:${tot?done/tot*100:0}%"></i></div></div>
   <div class="chips">${GLV.map(l=>{const n=gramOf(l).length,op=gramOpen(l);return`<button class="chip${l===gLv?" on":""}" data-gl="${l}" ${op&&n?"":"disabled"}>${op?"":"🔒 "}HSK${l}${n?` · ${gramOf(l).filter(g=>gsc(g.id)>=GM_NEED).length}/${n}`:" · sắp có"}</button>`}).join("")}</div>
   <div class="panel gtier"><div class="row" style="justify-content:space-between;align-items:center"><b>Tầng ${gLv} · ${pts.length} công pháp</b><span class="muted small">Luyện thành ${ldone}/${pts.length}${(S.gmLv||{})[gLv]?" · ✅ Đại thành":""}</span></div>
@@ -3581,6 +3624,7 @@ $("admApply").onclick=()=>{S.realm=+$("admRealm").value;S.sub=+$("admSub").value
 $("admQi").onclick=()=>{qiAddFree("admin",need());save();renderAll();toast("Linh khí đã đầy")};
 $("admStone").onclick=()=>{S.stones+=1000;save();renderAll();toast("+1000 linh thạch")};
 $("admXu").onclick=()=>{S.xu=XU()+100;save();renderAll();toast("+100 🔮 Thần Tinh")};
+$("admBase").onclick=()=>{S.base=S.base||{seen:{}};Object.assign(S.base,{tonePass:1,iniBest:21,finBest:35,rx:Object.fromEntries(RADS.map(r=>[r.n,1]))});save();renderAll();sfx("up");toast("Đã đả thông đủ 12 kinh mạch (căn cơ tối đa)")};
 $("admItem").onclick=()=>{for(const k in S.inv)S.inv[k]+=10;save();renderAll();toast("+10 mỗi loại đan dược và bùa")};
 
 /* ---------- NHẠC NỀN (tự tạo bằng Web Audio) ---------- */
