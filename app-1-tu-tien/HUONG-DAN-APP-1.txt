@@ -1,0 +1,5 @@
+APP 1 · TU TIÊN HỌC HÁN NGỮ (game)
+Tải 4 mục này lên THƯ MỤC GỐC của kho GitHub (ghi đè file cũ):
+  index.html · manifest.webmanifest · sw.js · icons/
+Địa chỉ: https://<tài-khoản>.github.io/<tên-kho>/
+Android: Chrome > nút "Cài app" hoặc menu ⋮ > "Cài đặt ứng dụng". iPhone: Safari > Chia sẻ > "Thêm vào MH chính".
