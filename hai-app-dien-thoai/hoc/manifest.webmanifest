@@ -1,0 +1,41 @@
+{
+ "id": "hoc-tieng-trung-hsk",
+ "name": "Học tiếng Trung · HSK 1–6",
+ "short_name": "Học Trung",
+ "description": "Học từ vựng, ngữ pháp, đọc nghe, luyện gõ và phát âm tiếng Trung HSK1–6",
+ "lang": "vi",
+ "dir": "ltr",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "display_override": [
+  "standalone",
+  "minimal-ui"
+ ],
+ "orientation": "portrait",
+ "background_color": "#F6F8F7",
+ "theme_color": "#2E7D6B",
+ "categories": [
+  "education"
+ ],
+ "icons": [
+  {
+   "src": "icons/hoc-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/hoc-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icons/hoc-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
